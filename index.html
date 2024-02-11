@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/324/324104.png"
+    />
+    <title>T2D</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+   בחרי את האורח+שרשרת
+            <input
+            type="text"
+            id="peopleList"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+          
+          <button onclick="submitData()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+       </div><br />
+    מה המקום בשרשרת של חרוז זה? (מה המספר?)<input
+      type="number"
+      id="order"
+      name="order"
+      min="1"
+      autocomplete="off"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לסרט5:55 
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToFive"
+      name="linkToFive"
+      spellcheck="false"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לסרטון של הראיון המלא
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToFull"
+      name="linkToFull"
+      spellcheck="false"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לפלייליסט
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToPlaylist"
+      name="linkToPlaylist"
+      spellcheck="false"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לסרטון ההכנה (אם יש)
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToPrep"
+      name="linkToPrep"
+      spellcheck="false"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לסרטון הסבר על השרשרת (אם יש)
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToExplain"
+      name="linkToExplain"
+      spellcheck="false"
+    /><br />
+    <input type="radio" id="long" name="type" value="long" />
+    <label for="long">ראיון מלא</label>
+    <br />
+    <input
+      type="radio"
+      id="short"
+      name="type"
+      value="short"
+      checked="checked"
+    />
+    <label for="short">סרטון 5:55</label>
+    <br />
+    <input type="radio" id="tiny" name="type" value="tiny" />
+    <label for="tiny">short</label>
+    <br />
+    <input type="radio" id="sound" name="type" value="sound" />
+    <label for="sound">סאונד</label>
+    <br />
+    <input type="radio" id="pre" name="type" value="pre" />
+    <label for="pre">שיחת הכנה</label>
+    <br />
+    <input type="radio" id="exp" name="type" value="exp" />
+    <label for="exp">הסבר על שרשרת</label>
+    <br />
+    <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
+    <button onclick="reset()">לאפס נתונים</button>
+    <br />
+    <br />
+    <button onclick="copycat('title')">להעתקת הכותרת</button>
+    <button onclick="copycat('div')">להעתקת התיאור</button>
+    <br />
+    <h2 id="title">כך נראית התבנית לפני מילוי הפרטים:</h2>
+    <br />
+    <div id="div">
+      <h1 id="fullVideo">לראיון המלא:</h1>
+      <h1 id="subtitle"></h1>
+      <h1 id="notExplainVideo">סרטון הסבר על אופי השרשרת והמשתתפים</h1>
+      <h1 id="topicOfStory">נושא הסיפור:</h1>
+      <h1 id="aboutTheGuest">על האורח/ת:</h1>
+      <h1 id="facebook">פייסבוק:</h1>
+      <h1 id="instagram">אינסטגרם:</h1>
+      <h1 id="tiktok">טיקטוק:</h1>
+      <h1 id="otherSite">אתר</h1>
+      <h1 id="categoryDescription">בשרשרת</h1>
+      <h1 id="explainVideo">הסבר על השרשרת:</h1>
+      <h1 id="playlist">לצפייה בשרשרת</h1>
+      <h1 id="nameOfInterviewer">המראיינ/ת:</h1>
+      <h1 id="date"></h1>
+      <h1>סיפור555 - פרויקט חברתי ליצירת במה להשראה והשפעה.</h1>
+      <h1>תכנית שידור ראיונות בשרשרת, רשת חברתית של סיפורים, כולנו חרוזים בשרשרת.</h1>
+      <h1>מוזמנים/ות לעקוב אחרי הערוץ!</h1>
+      <h1>https://www.youtube.com/@5story55?sub_confirmation=1</h1>
+      <h1>https://www.facebook.com/5story55</h1>
+      <h1>https://www.instagram.com/5story55/</h1>
+      <h1 id="pod">מוזמנים/ות גם להאזין לנו בפודקאסט:</h1>
+      <h1>https://tinyurl.com/story555spotify</h1>
+      <h1>https://soundcloud.com/5story55</h1>
+      <h1>https://tinyurl.com/story555googlepodcasts</h1>
+      <h1 id="tags">תגיות: #</h1>
+      <h1 id="prepTalk">לצפייה בשיחת ההכנה:</h1>
+      <h1>לפרטים על הפרויקט והצוות: https://tinyurl.com/story555aboutUs</h1>
+      <h1>הצוות: יזמות - יעל מילוא, טכנולוגיה - הגר יבין, וידאו - רחל צ'פליק, תוכן - דנה רדאי, נילי דותן, לוגו - שני</h1>
+    </div>
+    <br />
+    <script src="app2.js"></script> 
+  </body>
+  </html>
+  
