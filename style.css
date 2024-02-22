@@ -19,11 +19,10 @@ textarea {
   background-color: #f8f8f8;
   resize: none;
 }
-h1 {
-  font-size: 10px;
-}
-#div {
+
+#text {
   right: 200px;
   position: absolute;
-  margin: auto;
+  margin: 0px;
+  padding: 0px; 
 }
