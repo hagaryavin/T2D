@@ -1,6 +1,5 @@
 var options = document.getElementById("people");
-console.log("wtf");
-
+var theImportantT2DURL="https://script.google.com/macros/s/AKfycbxo8kjD4-TU-BiJWqXNRkXMdTC-O9H7SmzEZWw5RY7FFdGvQX2Sj7e_ta_JFqEmeGca/exec";
 var url =
   "https://script.google.com/macros/s/AKfycbxDcej67zrhC5zOxbGN76qFBZc3AWbP4UUhexUqPRnzN79Lb5ZmTl5PMgYNFihoXXl3Kg/exec";
 var newPerson = {};
@@ -12,11 +11,41 @@ var personOption;
 var allChains = [];
 var newChain = {};
 var currChain = {};
+var descLines=[];
+var linesInFive=[];
+var linesInFullVideo=[];
+var linesInPrepareTalk=[];
+var linesInExplainChain=[];
+var linesInShort=[];
+var linesInSound=[];
+var linesInPlaylistFive=[];
+var linesInPlaylistFull=[];
 var chainDataURL =
   "https://script.google.com/macros/s/AKfycbz7IgSM1Rhei0PPSgEHwxD_YHtyevYhZt32Mje9asUeGE20_J8a59XYw0xNFJMxjDKXKA/exec";
+getDescData();
 getChainData();
 getData();
-
+function getDescData(){
+    fetch(theImportantT2DURL)
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+         json.data.forEach((ele) => {         
+             descLines.push(ele.lineindescription);
+             linesInFive.push(ele.five);
+             linesInFullVideo.push(ele.fullvideo);
+             linesInPrepareTalk.push(ele.preparetalk);
+             linesInExplainChain.push(ele.explainchain);
+             linesInShort.push(ele.short);
+             linesInSound.push(ele.sound);
+             linesInPlaylistFive.push(ele.playlistfive);
+             linesInPlaylistFull.push(ele.playlistfull);
+         })
+       
+    })
+    
+}
 function getData() {
   fetch(url)
     .then((res) => {
@@ -89,6 +118,8 @@ function getChainData() {
           altName: ele.othername,
           playlist: ele.playlist,
           description: ele.description,
+          about:ele.about,
+          participants:ele.participants,
         };
         allChains.push(newChain);
       });
@@ -134,7 +165,7 @@ function submitData() {
   document.getElementById("linkToFive").value = selectedPerson.fiveVideo;
   document.getElementById("linkToFull").value = selectedPerson.fullVideo;
   document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
-  document.getElementById("linkToExplain").value = selectedPerson.explainVideo;
+  document.getElementById("linkToExplain").value = currChain.about;
   document.getElementById("linkToPlaylist").value = currChain.playlist;
 }
 function reset() {
@@ -155,17 +186,22 @@ function copycat(id) {
   document.body.removeChild(elem);
   alert("הטקסט הועתק!");
 }
-function isNull(thing) {
-  if (thing.length > 2) return false;
-  return true;
-}
-
 function fixDate(str) {
   var year = str.getFullYear();
   var month = str.getMonth() + 1;
   var day = str.getDate();
 
   return day + "/" + month + "/" + year;
+}
+function fixTags(str){
+
+    while (str.includes(".")) {
+        str = str.replace(".", "_");
+    }
+    while (str.includes(" ")) {
+        str = str.replace(" ", "_");
+    }
+    return str;
 }
 function fixChain(chain) {
   var splittedChain; //
@@ -181,57 +217,143 @@ function fixChain(chain) {
   return chain;
 }
 function submit() {
-  submitting();
+     if (document.getElementById("tiny").checked) 
+        showText("short");
+     if (document.getElementById("short").checked) 
+        showText("five");
+    if(document.getElementById("long").checked)
+        showText("fullVideo");
+    if(document.getElementById("sound").checked)
+        showText("sound");
+    if(document.getElementById("pre").checked)
+        showText("prepareTalk");
+    if(document.getElementById("exp").checked)
+        showText("explainChain");
+    if(document.getElementById("playlistFive").checked)
+        showText("playlistFive");
+    if(document.getElementById("playlistFull").checked)
+        showText("playlistFull");
+    fixTitle();
+    
 }
-function submitting() {
-  //return to basic :|
-  document.getElementById("title").innerHTML = "";
-  document.getElementById("subtitle").innerHTML = "";
-  document.getElementById("fullVideo").innerHTML = "לראיון המלא: ";
-  document.getElementById("explainVideo").innerHTML = "הסבר על השרשרת: ";
-  document.getElementById("topicOfStory").innerHTML = "נושא הסיפור:";
-  document.getElementById("aboutTheGuest").innerHTML = "על האורח/ת:";
-  document.getElementById("facebook").innerHTML = "פייסבוק:";
-  document.getElementById("instagram").innerHTML = "אינסטגרם:";
-  document.getElementById("tiktok").innerHTML = "טיקטוק:";
-  document.getElementById("otherSite").innerHTML = "אתר";
-  document.getElementById("playlist").innerHTML = " לצפייה בשרשרת";
-  document.getElementById("nameOfInterviewer").innerHTML = "המראיינ/ת:";
-  document.getElementById("date").innerHTML = "";
-  document.getElementById("tags").innerHTML = "תגיות: #";
-  document.getElementById("prepTalk").innerHTML = "לצפייה בשיחת ההכנה:";
-  document.getElementById("categoryDescription").innerHTML = "תיאור השרשרת"; //"בשרשרת";
-
-  document.getElementById("title").style.visibility = "visible";
-  document.getElementById("subtitle").style.visibility = "visible";
-  document.getElementById("fullVideo").style.visibility = "visible";
-  document.getElementById("notExplainVideo").style.visibility = "visible";
-  document.getElementById("explainVideo").style.visibility = "visible";
-  document.getElementById("topicOfStory").style.visibility = "visible";
-  document.getElementById("aboutTheGuest").style.visibility = "visible";
-  document.getElementById("facebook").style.visibility = "visible";
-  document.getElementById("instagram").style.visibility = "visible";
-  document.getElementById("tiktok").style.visibility = "visible";
-  document.getElementById("otherSite").style.visibility = "visible";
-  document.getElementById("playlist").style.visibility = "visible";
-  document.getElementById("nameOfInterviewer").style.visibility = "visible";
-  document.getElementById("date").style.visibility = "visible";
-  document.getElementById("tags").style.visibility = "visible";
-  document.getElementById("prepTalk").style.visibility = "visible";
-  document.getElementById("pod").style.visibility = "visible";
-  //
-
-  const str = " "; //= document.getElementById("myText").value;
-  const myArray = str.split("	");
-  //
-
-  //
-  if (document.getElementById("tiny").checked) {
-    document.getElementById("short").checked;
+function showText(type){
+    var testDiv = document.getElementById("text");
+    removeAllChildNodes(testDiv);
+    console.log("in "+type+":");
+    var currLine;
+    for(var i=0;i<descLines.length;i++){
+        currLine=descLines[i];
+        currLine=swapWithData(currLine);
+        if(
+            (type==="five"&&linesInFive[i]==="v")||
+            (type==="fullVideo"&&linesInFullVideo[i]==="v")||
+            (type==="prepareTalk"&&linesInPrepareTalk[i]==="v")||
+            (type==="explainChain"&&linesInExplainChain[i]==="v")||
+            (type==="short"&&linesInShort[i]==="v")||
+            (type==="sound"&&linesInSound[i]==="v")||
+            (type==="playlistFive"&&linesInPlaylistFive[i]==="v")||
+            (type==="playlistFull"&&linesInPlaylistFull[i]==="v")
+          ){
+                if(currLine!==""){
+                    console.log(currLine);
+                    var testH4 = document.createElement("h4");
+                    testH4.innerHTML = currLine;
+                    testDiv.append(testH4);
+                }
+            
+        }
+        currLine="";
+    }
+    
+}
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
   }
-
-  //title
-
+}
+function swapWithData(line){
+    if(line.includes("fullVideoLink")){
+        line=line.replace("fullVideoLink", document.getElementById("linkToFull").value);
+        if(document.getElementById("linkToFull").value==="")
+            line="";
+    }
+     if(line.includes("topicOfStory")){
+        line=line.replace("topicOfStory", selectedPerson.topicOfStory);
+        if(selectedPerson.topicOfStory==="")
+            line="";
+    }
+     if(line.includes("aboutTheGuest")){
+        line=line.replace("aboutTheGuest", selectedPerson.aboutTheGuest);
+        if(selectedPerson.aboutTheGuest==="")
+            line="";
+    }
+    if(line.includes("facebookLink")){
+        line=line.replace("facebookLink", selectedPerson.facebook);
+        if( selectedPerson.facebook==="")
+            line="";
+    }
+    if(line.includes("instagramLink")){
+        line=line.replace("instagramLink", selectedPerson.instagram);
+        if( selectedPerson.instagram==="")
+            line="";
+    }
+    if(line.includes("websiteLink")){
+        line=line.replace("websiteLink", selectedPerson.sites);
+        if(selectedPerson.sites===""||selectedPerson.sites===" ")
+            line="";
+    }
+    if(line.includes("chainName")){
+        if(!line.includes("תגיות"))
+            line=line.replace("chainName", currChain.name);
+        if(line.includes("תגיות")){
+            line=line.replace("chainName", fixTags(currChain.name));
+        }
+        if(currChain.name==="")
+            line="";
+    }
+    if(line.includes("chainDescription")){
+        line=line.replace("chainDescription", currChain.description);
+        if(currChain.description==="")
+            line="";
+    }
+    if(line.includes("chainAbout")){
+        line=line.replace("chainAbout", document.getElementById("linkToExplain").value);
+        if(document.getElementById("linkToExplain").value==="")
+            line="";
+    }
+    if(line.includes("chainParticipants")){
+        line=line.replace("chainParticipants", currChain.participants);
+        if(currChain.participants==="")
+            line="";
+    }
+    if(line.includes("playlistLink")){
+        line=line.replace("playlistLink", document.getElementById("linkToPlaylist").value);
+        if(document.getElementById("linkToPlaylist").value==="")
+            line="";
+    }
+    if(line.includes("date")){
+        if(selectedPerson.date!=="")
+            line=line.replace("date", fixDate(selectedPerson.date));
+        if(selectedPerson.date==="")
+            line="";
+    }
+    if(line.includes("interviewerName")){
+        line=line.replace("interviewerName", selectedPerson.interviewerName);
+        if(selectedPerson.interviewerName==="")
+            line="";
+    }
+    if(line.includes("prepTalkLink")){
+        line=line.replace("prepTalkLink", document.getElementById("linkToPrep").value);
+        if(document.getElementById("linkToPrep").value==="")
+            line="";
+    }
+    return line;
+}
+function fixTitle() {
+  document.getElementById("title").innerHTML="";
+if (document.getElementById("tiny").checked) {
+    document.getElementById("short").checked;
+  }    
   var nameOfPerson = selectedPerson.name;
   const splittedName = nameOfPerson.split(" ");
   if (
@@ -280,214 +402,13 @@ function submitting() {
       document.getElementById("order").value +
       " | סיפור55";
   }
-
-  //
-  //categoryDescription
-  document.getElementById("categoryDescription").innerHTML =
-    "הסבר על השרשרת: " + currChain.name + " - " + currChain.description;
-
-  //topicOfStory
-  if (!isNull(selectedPerson.topicOfStory)) {
-    document.getElementById("topicOfStory").innerHTML +=
-      " " + selectedPerson.topicOfStory;
+  if (document.getElementById("playlistFive").checked) {
+    document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain;
   }
-  if (isNull(selectedPerson.topicOfStory)) {
-    document.getElementById("topicOfStory").style.visibility = "hidden";
-  }
-  //
-
-  //fullVideo
-  if (document.getElementById("long").checked) {
-    document.getElementById("fullVideo").style.visibility = "hidden";
-  }
-  if (!document.getElementById("long").checked) {
-    if (!isNull(document.getElementById("linkToFull").value)) {
-      document.getElementById("fullVideo").innerHTML +=
-        document.getElementById("linkToFull").value;
+  if (document.getElementById("playlistFull").checked) {
+        document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain+"-הראיון" ; 
     }
-    if (isNull(document.getElementById("linkToFull").value)) {
-      document.getElementById("fullVideo").style.visibility = "hidden";
-      if (
-        !document.getElementById("short").checked &&
-        !isNull(document.getElementById("linkToFive").value)
-      ) {
-        document.getElementById("fullVideo").innerHTML =
-          "לסרט5:55: " + document.getElementById("linkToFive").value;
-        document.getElementById("fullVideo").style.visibility = "visible";
-      }
-    }
-  }
-  //
-  //explain video
-  if (!document.getElementById("exp").checked) {
-    document.getElementById("notExplainVideo").style.visibility = "hidden";
-  }
-  if (document.getElementById("exp").checked) {
-    document.getElementById("fullVideo").style.visibility = "hidden";
-    document.getElementById("explainVideo").style.visibility = "hidden";
-    document.getElementById("topicOfStory").style.visibility = "hidden";
-    document.getElementById("aboutTheGuest").style.visibility = "hidden";
-    document.getElementById("facebook").style.visibility = "hidden";
-    document.getElementById("instagram").style.visibility = "hidden";
-    document.getElementById("tiktok").style.visibility = "hidden";
-    document.getElementById("otherSite").style.visibility = "hidden";
-    document.getElementById("nameOfInterviewer").style.visibility = "hidden";
-    document.getElementById("date").style.visibility = "hidden";
-    document.getElementById("prepTalk").style.visibility = "hidden";
-  }
-  if (!document.getElementById("exp").checked) {
-    if (!isNull(document.getElementById("linkToExplain").value)) {
-      document.getElementById("explainVideo").innerHTML +=
-        document.getElementById("linkToExplain").value;
-    }
-    if (isNull(document.getElementById("linkToExplain").value)) {
-      document.getElementById("explainVideo").style.visibility = "hidden";
-    }
-  }
 
-  //
-  //playlist
-  if (!isNull(document.getElementById("linkToPlaylist").value)) {
-    document.getElementById("playlist").innerHTML +=
-      " " +
-      currChain.name +
-      ": " +
-      document.getElementById("linkToPlaylist").value;
-  }
-  if (isNull(document.getElementById("linkToPlaylist").value)) {
-    document.getElementById("playlist").style.visibility = "hidden";
-  }
-
-  //
-
-  //tags
-  document.getElementById("tags").innerHTML +=
-    selectedPerson.chain.replace(" ", "_") + " #";
-
-  while (selectedPerson.chain.includes(".")) {
-    selectedPerson.chain = selectedPerson.chain.replace(".", "_");
-  }
-  document.getElementById("tags").innerHTML += selectedPerson.chain + " #";
-  if (document.getElementById("tiny").checked) {
-    document.getElementById("tags").innerHTML += "shorts";
-  }
-  while (selectedPerson.chain.includes("_")) {
-    selectedPerson.chain = selectedPerson.chain.replace("_", ".");
-  }
-  //
-
-  //prepTalk
-  if (
-    document.getElementById("pre").checked ||
-    document.getElementById("short").checked ||
-    document.getElementById("tiny").checked ||
-    document.getElementById("sound").checked
-  ) {
-    document.getElementById("prepTalk").style.visibility = "hidden";
-  }
-  if (document.getElementById("long").checked) {
-    if (!isNull(document.getElementById("linkToPrep").value)) {
-      document.getElementById("prepTalk").innerHTML +=
-        " " + document.getElementById("linkToPrep").value;
-    }
-    if (isNull(document.getElementById("linkToPrep").value)) {
-      document.getElementById("prepTalk").style.visibility = "hidden";
-    }
-  }
-
-  //aboutTheGuest
-  if (!isNull(selectedPerson.aboutTheGuest)) {
-    document.getElementById("aboutTheGuest").innerHTML +=
-      " " + selectedPerson.aboutTheGuest;
-  }
-  if (isNull(selectedPerson.aboutTheGuest)) {
-    document.getElementById("aboutTheGuest").style.visibility = "hidden";
-  }
-  //
-  //
-  //subtitle מסר
-  if (!isNull(selectedPerson.subtitle)) {
-    document.getElementById("subtitle").innerHTML = selectedPerson.subtitle;
-  }
-
-  //
-  //facebook
-  if (!isNull(selectedPerson.facebook)) {
-    document.getElementById("facebook").innerHTML +=
-      " " + selectedPerson.facebook;
-  }
-  if (isNull(selectedPerson.facebook)) {
-    document.getElementById("facebook").style.visibility = "hidden";
-  }
-  //
-
-  //otherSite(s)
-  if (!isNull(selectedPerson.sites)) {
-    if (
-      !isNull(selectedPerson.facebook) ||
-      !isNull(selectedPerson.instagram) ||
-      !isNull(selectedPerson.tiktok)
-    ) {
-      document.getElementById("otherSite").innerHTML +=
-        " נוסף: " + selectedPerson.sites;
-    }
-    if (
-      isNull(selectedPerson.facebook) &&
-      isNull(selectedPerson.instagram) &&
-      isNull(selectedPerson.tiktok)
-    ) {
-      document.getElementById("otherSite").innerHTML +=
-        ": " + selectedPerson.sites;
-    }
-  }
-  if (isNull(selectedPerson.sites)) {
-    document.getElementById("otherSite").style.visibility = "hidden";
-  }
-  //
-
-  //instagram
-  if (!isNull(selectedPerson.instagram)) {
-    document.getElementById("instagram").innerHTML +=
-      " " + selectedPerson.instagram;
-  }
-  if (isNull(selectedPerson.instagram)) {
-    document.getElementById("instagram").style.visibility = "hidden";
-  }
-
-  //
-
-  //tiktok
-  if (!isNull(selectedPerson.tiktok)) {
-    document.getElementById("tiktok").innerHTML += " " + selectedPerson.tiktok;
-  }
-  if (isNull(selectedPerson.tiktok)) {
-    document.getElementById("tiktok").style.visibility = "hidden";
-  }
-  //
-
-  //nameOfInterviewer
-  if (!isNull(selectedPerson.interviewerName)) {
-    document.getElementById("nameOfInterviewer").innerHTML +=
-      " " + selectedPerson.interviewerName;
-  }
-  if (isNull(selectedPerson.interviewerName)) {
-    document.getElementById("nameOfInterviewer").style.visibility = "hidden";
-  }
-  //
-
-  //date
-  if (selectedPerson.date !== "") {
-    document.getElementById("date").innerHTML +=
-      " " + fixDate(selectedPerson.date);
-  }
-  if (selectedPerson.date === "") {
-    document.getElementById("date").style.visibility = "hidden";
-  }
-
-  //pod
-  if (document.getElementById("sound").checked) {
-    document.getElementById("pod").style.visibility = "hidden";
-  }
 }
 function endsWithNumber(str) {
   str = str.trim();
