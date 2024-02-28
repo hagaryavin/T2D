@@ -167,6 +167,7 @@ function submitData() {
   document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
   document.getElementById("linkToExplain").value = currChain.about;
   document.getElementById("linkToPlaylist").value = currChain.playlist;
+  
 }
 function reset() {
   document.getElementById("order").value = "";
@@ -175,6 +176,8 @@ function reset() {
   document.getElementById("linkToPlaylist").value = "";
   document.getElementById("linkToExplain").value = "";
   document.getElementById("linkToFive").value = "";
+     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
+   document.getElementById("textCopy").innerHTML="להעתקת התיאור";
 }
 function copycat(id) {
   var text = document.getElementById(id).innerText;
@@ -184,7 +187,7 @@ function copycat(id) {
   elem.select();
   document.execCommand("copy");
   document.body.removeChild(elem);
-  alert("הטקסט הועתק!");
+  document.getElementById(id+"Copy").innerHTML="הועתק";
 }
 function fixDate(str) {
   var year = str.getFullYear();
@@ -217,6 +220,8 @@ function fixChain(chain) {
   return chain;
 }
 function submit() {
+    document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
+   document.getElementById("textCopy").innerHTML="להעתקת התיאור";
      if (document.getElementById("tiny").checked) 
         showText("short");
      if (document.getElementById("short").checked) 
@@ -234,6 +239,7 @@ function submit() {
     if(document.getElementById("playlistFull").checked)
         showText("playlistFull");
     fixTitle();
+     
     
 }
 function showText(type){
