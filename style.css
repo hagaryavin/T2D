@@ -23,6 +23,9 @@ textarea {
 #text {
   right: 200px;
   position: absolute;
-  margin: 0px;
-  padding: 0px; 
+  margin: 0;
+   
+}
+h4{
+   margin: 0; 
 }
