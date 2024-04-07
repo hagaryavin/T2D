@@ -20,6 +20,7 @@ var linesInShort=[];
 var linesInSound=[];
 var linesInPlaylistFive=[];
 var linesInPlaylistFull=[];
+var linesInLivePost=[];
 var chainDataURL =
   "https://script.google.com/macros/s/AKfycbz7IgSM1Rhei0PPSgEHwxD_YHtyevYhZt32Mje9asUeGE20_J8a59XYw0xNFJMxjDKXKA/exec";
 getDescData();
@@ -41,6 +42,7 @@ function getDescData(){
              linesInSound.push(ele.sound);
              linesInPlaylistFive.push(ele.playlistfive);
              linesInPlaylistFull.push(ele.playlistfull);
+             linesInLivePost.push(ele.livepost);
          })
        
     })
@@ -238,6 +240,8 @@ function submit() {
         showText("playlistFive");
     if(document.getElementById("playlistFull").checked)
         showText("playlistFull");
+    if(document.getElementById("livePost").checked)
+        showText("livePost");
     fixTitle();
      
     
@@ -258,7 +262,8 @@ function showText(type){
             (type==="short"&&linesInShort[i]==="v")||
             (type==="sound"&&linesInSound[i]==="v")||
             (type==="playlistFive"&&linesInPlaylistFive[i]==="v")||
-            (type==="playlistFull"&&linesInPlaylistFull[i]==="v")
+            (type==="playlistFull"&&linesInPlaylistFull[i]==="v")||
+            (type==="livePost"&&linesInLivePost[i]==="v")
           ){
                 if(currLine!==""){
                     console.log(currLine);
@@ -291,6 +296,11 @@ function swapWithData(line){
      if(line.includes("aboutTheGuest")){
         line=line.replace("aboutTheGuest", selectedPerson.aboutTheGuest);
         if(selectedPerson.aboutTheGuest==="")
+            line="";
+    }
+    if(line.includes("guestName")){
+        line=line.replace("guestName", selectedPerson.name);
+        if(selectedPerson.name==="")
             line="";
     }
     if(line.includes("facebookLink")){
