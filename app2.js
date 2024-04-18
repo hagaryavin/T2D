@@ -72,6 +72,7 @@ function getData() {
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
+            id: ele.id,
           row: rowCount,
         };
 
@@ -372,9 +373,11 @@ if (document.getElementById("tiny").checked) {
   }    
   var nameOfPerson = selectedPerson.name;
   const splittedName = nameOfPerson.split(" ");
+    if(document.getElementById("sound").checked){
+        document.getElementById("title").innerHTML="פרק "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
+    }
   if (
     document.getElementById("short").checked ||
-    document.getElementById("sound").checked ||
     document.getElementById("long").checked
   ) {
     document.getElementById("title").innerHTML =
