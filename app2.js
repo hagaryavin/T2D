@@ -1,5 +1,5 @@
 var options = document.getElementById("people");
-var theImportantT2DURL="https://script.google.com/macros/s/AKfycbxo8kjD4-TU-BiJWqXNRkXMdTC-O9H7SmzEZWw5RY7FFdGvQX2Sj7e_ta_JFqEmeGca/exec";
+var theImportantT2DURL="https://script.google.com/macros/s/AKfycbzk2MICLL9y7rAWPdxJCyQawHAg2Is7enEQvv944sUc1MxFdwgeL4yWZUkGWK_jB_45/exec";
 var url =
   "https://script.google.com/macros/s/AKfycbxDcej67zrhC5zOxbGN76qFBZc3AWbP4UUhexUqPRnzN79Lb5ZmTl5PMgYNFihoXXl3Kg/exec";
 var newPerson = {};
@@ -11,16 +11,27 @@ var personOption;
 var allChains = [];
 var newChain = {};
 var currChain = {};
-var descLines=[];
-var linesInFive=[];
-var linesInFullVideo=[];
-var linesInPrepareTalk=[];
-var linesInExplainChain=[];
-var linesInShort=[];
-var linesInSound=[];
-var linesInPlaylistFive=[];
-var linesInPlaylistFull=[];
-var linesInLivePost=[];
+var descLines1=[];
+var descLines2=[];
+var linesInFiveHeb=[];
+var linesInFullVideoHeb=[];
+var linesInPrepareTalkHeb=[];
+var linesInExplainChainHeb=[];
+var linesInShortHeb=[];
+var linesInSoundHeb=[];
+var linesInPlaylistFiveHeb=[];
+var linesInPlaylistFullHeb=[];
+var linesInLivePostHeb=[];
+var linesInFiveEng=[];
+var linesInFullVideoEng=[];
+var linesInPrepareTalkEng=[];
+var linesInExplainChainEng=[];
+var linesInShortEng=[];
+var linesInSoundEng=[];
+var linesInPlaylistFiveEng=[];
+var linesInPlaylistFullEng=[];
+var linesInLivePostEng=[];
+var currLang="";
 var chainDataURL =
   "https://script.google.com/macros/s/AKfycbz7IgSM1Rhei0PPSgEHwxD_YHtyevYhZt32Mje9asUeGE20_J8a59XYw0xNFJMxjDKXKA/exec";
 getDescData();
@@ -32,18 +43,31 @@ function getDescData(){
       return res.json();
     })
     .then((json) => {
-         json.data.forEach((ele) => {         
-             descLines.push(ele.lineindescription);
-             linesInFive.push(ele.five);
-             linesInFullVideo.push(ele.fullvideo);
-             linesInPrepareTalk.push(ele.preparetalk);
-             linesInExplainChain.push(ele.explainchain);
-             linesInShort.push(ele.short);
-             linesInSound.push(ele.sound);
-             linesInPlaylistFive.push(ele.playlistfive);
-             linesInPlaylistFull.push(ele.playlistfull);
-             linesInLivePost.push(ele.livepost);
+         json.data.heb.forEach((ele) => {         
+             descLines1.push(ele.lineindescription);
+             linesInFiveHeb.push(ele.five);
+             linesInFullVideoHeb.push(ele.fullvideo);
+             linesInPrepareTalkHeb.push(ele.preparetalk);
+             linesInExplainChainHeb.push(ele.explainchain);
+             linesInShortHeb.push(ele.short);
+             linesInSoundHeb.push(ele.sound);
+             linesInPlaylistFiveHeb.push(ele.playlistfive);
+             linesInPlaylistFullHeb.push(ele.playlistfull);
+             linesInLivePostHeb.push(ele.livepost);
          })
+            json.data.eng.forEach((ele) => {         
+             descLines2.push(ele.lineindescription);
+             linesInFiveEng.push(ele.five);
+             linesInFullVideoEng.push(ele.fullvideo);
+             linesInPrepareTalkEng.push(ele.preparetalk);
+             linesInExplainChainEng.push(ele.explainchain);
+             linesInShortEng.push(ele.short);
+             linesInSoundEng.push(ele.sound);
+             linesInPlaylistFiveEng.push(ele.playlistfive);
+             linesInPlaylistFullEng.push(ele.playlistfull);
+             linesInLivePostEng.push(ele.livepost);
+         })
+        
        
     })
     
@@ -225,56 +249,104 @@ function fixChain(chain) {
 function submit() {
     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
-     if (document.getElementById("tiny").checked) 
-        showText("short");
-     if (document.getElementById("short").checked) 
-        showText("five");
-    if(document.getElementById("long").checked)
-        showText("fullVideo");
-    if(document.getElementById("sound").checked)
-        showText("sound");
-    if(document.getElementById("pre").checked)
-        showText("prepareTalk");
-    if(document.getElementById("exp").checked)
-        showText("explainChain");
-    if(document.getElementById("playlistFive").checked)
-        showText("playlistFive");
-    if(document.getElementById("playlistFull").checked)
-        showText("playlistFull");
-    if(document.getElementById("livePost").checked)
-        showText("livePost");
+     if (document.getElementById("tinyHeb").checked) 
+        showText("short","heb");
+     if (document.getElementById("shortHeb").checked) 
+        showText("five","heb");
+    if(document.getElementById("longHeb").checked)
+        showText("fullVideo","heb");
+    if(document.getElementById("soundHeb").checked)
+        showText("sound","heb");
+    if(document.getElementById("preHeb").checked)
+        showText("prepareTalk","heb");
+    if(document.getElementById("expHeb").checked)
+        showText("explainChain","heb");
+    if(document.getElementById("playlistFiveHeb").checked)
+        showText("playlistFive","heb");
+    if(document.getElementById("playlistFullHeb").checked)
+        showText("playlistFull","heb");
+    if(document.getElementById("livePostHeb").checked)
+        showText("livePost","heb");
+    
+     if (document.getElementById("tinyEng").checked) 
+        showText("short","eng");
+     if (document.getElementById("shortEng").checked) 
+        showText("five","eng");
+    if(document.getElementById("longEng").checked)
+        showText("fullVideo","eng");
+    if(document.getElementById("soundEng").checked)
+        showText("sound","eng");
+    if(document.getElementById("preEng").checked)
+        showText("prepareTalk","eng");
+    if(document.getElementById("expEng").checked)
+        showText("explainChain","eng");
+    if(document.getElementById("playlistFiveEng").checked)
+        showText("playlistFive","eng");
+    if(document.getElementById("playlistFullEng").checked)
+        showText("playlistFull","eng");
+    if(document.getElementById("livePostEng").checked)
+        showText("livePost","eng");
     fixTitle();
      
     
 }
-function showText(type){
+function showText(type,lang){
+    currLang=lang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
     console.log("in "+type+":");
     var currLine;
-    for(var i=0;i<descLines.length;i++){
-        currLine=descLines[i];
-        currLine=swapWithData(currLine);
-        if(
-            (type==="five"&&linesInFive[i]==="v")||
-            (type==="fullVideo"&&linesInFullVideo[i]==="v")||
-            (type==="prepareTalk"&&linesInPrepareTalk[i]==="v")||
-            (type==="explainChain"&&linesInExplainChain[i]==="v")||
-            (type==="short"&&linesInShort[i]==="v")||
-            (type==="sound"&&linesInSound[i]==="v")||
-            (type==="playlistFive"&&linesInPlaylistFive[i]==="v")||
-            (type==="playlistFull"&&linesInPlaylistFull[i]==="v")||
-            (type==="livePost"&&linesInLivePost[i]==="v")
-          ){
-                if(currLine!==""){
-                    console.log(currLine);
-                    var testH4 = document.createElement("h4");
-                    testH4.innerHTML = currLine;
-                    testDiv.append(testH4);
-                }
-            
+    if(lang==="heb"){
+        for(var i=0;i<descLines1.length;i++){
+            currLine=descLines1[i];
+            currLine=swapWithData(currLine);
+            if(
+                (type==="five"&&linesInFiveHeb[i]==="v")||
+                (type==="fullVideo"&&linesInFullVideoHeb[i]==="v")||
+                (type==="prepareTalk"&&linesInPrepareTalkHeb[i]==="v")||
+                (type==="explainChain"&&linesInExplainChainHeb[i]==="v")||
+                (type==="short"&&linesInShortHeb[i]==="v")||
+                (type==="sound"&&linesInSoundHeb[i]==="v")||
+                (type==="playlistFive"&&linesInPlaylistFiveHeb[i]==="v")||
+                (type==="playlistFull"&&linesInPlaylistFullHeb[i]==="v")||
+                (type==="livePost"&&linesInLivePostHeb[i]==="v")
+              ){
+                    if(currLine!==""){
+                        console.log(currLine);
+                        var testH4 = document.createElement("h4");
+                        testH4.innerHTML = currLine;
+                        testDiv.append(testH4);
+                    }
+
+            }
+            currLine="";
         }
-        currLine="";
+    }
+    if(lang==="eng"){
+        for(var i=0;i<descLines2.length;i++){
+            currLine=descLines2[i];
+            currLine=swapWithData(currLine);
+            if(
+                (type==="five"&&linesInFiveEng[i]==="v")||
+                (type==="fullVideo"&&linesInFullVideoEng[i]==="v")||
+                (type==="prepareTalk"&&linesInPrepareTalkEng[i]==="v")||
+                (type==="explainChain"&&linesInExplainChainEng[i]==="v")||
+                (type==="short"&&linesInShortEng[i]==="v")||
+                (type==="sound"&&linesInSoundEng[i]==="v")||
+                (type==="playlistFive"&&linesInPlaylistFiveEng[i]==="v")||
+                (type==="playlistFull"&&linesInPlaylistFullEng[i]==="v")||
+                (type==="livePost"&&linesInLivePostEng[i]==="v")
+              ){
+                    if(currLine!==""){
+                        console.log(currLine);
+                        var testH4 = document.createElement("h4");
+                        testH4.innerHTML = currLine;
+                        testDiv.append(testH4);
+                    }
+
+            }
+            currLine="";
+        }
     }
     
 }
@@ -367,18 +439,19 @@ function swapWithData(line){
     return line;
 }
 function fixTitle() {
+    if(currLang==="heb"){
   document.getElementById("title").innerHTML="";
-if (document.getElementById("tiny").checked) {
-    document.getElementById("short").checked;
+if (document.getElementById("tinyHeb").checked) {
+    document.getElementById("shortHeb").checked;
   }    
   var nameOfPerson = selectedPerson.name;
   const splittedName = nameOfPerson.split(" ");
-    if(document.getElementById("sound").checked){
+    if(document.getElementById("soundHeb").checked){
         document.getElementById("title").innerHTML="פרק "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
     }
   if (
-    document.getElementById("short").checked ||
-    document.getElementById("long").checked
+    document.getElementById("shortHeb").checked ||
+    document.getElementById("longHeb").checked
   ) {
     document.getElementById("title").innerHTML =
       selectedPerson.topicOfStory + " | ";
@@ -391,13 +464,13 @@ if (document.getElementById("tiny").checked) {
     document.getElementById("order").value +
     " | סיפור555";
 
-  if (document.getElementById("exp").checked) {
+  if (document.getElementById("expHeb").checked) {
     document.getElementById("title").innerHTML += "-השרשרת";
   }
-  if (document.getElementById("long").checked) {
+  if (document.getElementById("longHeb").checked) {
     document.getElementById("title").innerHTML += "-הראיון";
   }
-  if (document.getElementById("pre").checked) {
+  if (document.getElementById("preHeb").checked) {
     document.getElementById("title").innerHTML += "-הכנה";
   }
   var firstName = splittedName[0];
@@ -410,7 +483,7 @@ if (document.getElementById("tiny").checked) {
   ) {
     firstName = splittedName[1];
   }
-  if (document.getElementById("tiny").checked) {
+  if (document.getElementById("tinyHeb").checked) {
     document.getElementById("title").innerHTML =
       selectedPerson.topicOfStory +
       " | " +
@@ -421,13 +494,78 @@ if (document.getElementById("tiny").checked) {
       document.getElementById("order").value +
       " | סיפור55";
   }
-  if (document.getElementById("playlistFive").checked) {
+  if (document.getElementById("playlistFiveHeb").checked) {
     document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain;
   }
-  if (document.getElementById("playlistFull").checked) {
+  if (document.getElementById("playlistFullHeb").checked) {
         document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain+"-הראיון" ; 
     }
+    }
+    if(currLang==="eng"){
+  document.getElementById("title").innerHTML="";
+if (document.getElementById("tinyEng").checked) {
+    document.getElementById("shortEng").checked;
+  }    
+  var nameOfPerson = selectedPerson.name;
+  const splittedName = nameOfPerson.split(" ");
+    if(document.getElementById("soundEng").checked){
+        document.getElementById("title").innerHTML="Episode "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
+    }
+  if (
+    document.getElementById("shortEng").checked ||
+    document.getElementById("longEng").checked
+  ) {
+    document.getElementById("title").innerHTML =
+      selectedPerson.topicOfStory + " | ";
+  }
+  document.getElementById("title").innerHTML +=
+    nameOfPerson +
+    " | " +
+    selectedPerson.chain +
+    "" +
+    document.getElementById("order").value +
+    " | Story555";
 
+  if (document.getElementById("expEng").checked) {
+    document.getElementById("title").innerHTML += "-The Chain";
+  }
+  if (document.getElementById("longEng").checked) {
+    document.getElementById("title").innerHTML += "-The Interview";
+  }
+  if (document.getElementById("preEng").checked) {
+    document.getElementById("title").innerHTML += "-Preparation";
+  }
+  var firstName = splittedName[0];
+  if (
+    firstName === 'ד"ר' ||
+    firstName === "ד״ר" ||
+    firstName === "דוקטור" ||
+    firstName === "פרופסור" ||
+    firstName === "פרופ'"||
+       firstName === "Dr."||
+      firstName === "Doctor"||
+      firstName === "Professor"
+  ) {
+    firstName = splittedName[1];
+  }
+  if (document.getElementById("tinyEng").checked) {
+    document.getElementById("title").innerHTML =
+      selectedPerson.topicOfStory +
+      " | " +
+      firstName +
+      " | " +
+      selectedPerson.chain +
+      "" +
+      document.getElementById("order").value +
+      " | Story55";
+  }
+  if (document.getElementById("playlistFiveEng").checked) {
+    document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain;
+  }
+  if (document.getElementById("playlistFullEng").checked) {
+        document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain+"-The Interview" ; 
+    }
+    }
 }
 function endsWithNumber(str) {
   str = str.trim();
