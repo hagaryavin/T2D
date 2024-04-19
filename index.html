@@ -72,39 +72,121 @@
       name="linkToExplain"
       spellcheck="false"
     /><br />
-    <input type="radio" id="long" name="type" value="long" />
-    <label for="long">ראיון מלא</label>
-    <br />
+      <table>
+          <tr>
+              <td>
+                  <u>
+                  עברית
+              </u>
+                      </td>
+              <td>
+                  <u>
+                  אנגלית
+                  </u>
+                      </td>
+          </tr>
+      <tr> 
+          <td>
+    <input type="radio" id="longHeb" name="type" value="long" />
+    <label for="longHeb">ראיון מלא</label>
+              </td>
+          <td>
+    <input type="radio" id="longEng" name="type" value="long" />
+    <label for="longEng">ראיון מלא</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
     <input
       type="radio"
-      id="short"
+      id="shortHeb"
       name="type"
       value="short"
       checked="checked"
     />
-    <label for="short">סרטון 5:55</label>
-    <br />
-    <input type="radio" id="tiny" name="type" value="tiny" />
-    <label for="tiny">short</label>
-    <br />
-    <input type="radio" id="sound" name="type" value="sound" />
-    <label for="sound">סאונד</label>
-    <br />
-    <input type="radio" id="pre" name="type" value="pre" />
-    <label for="pre">שיחת הכנה</label>
-    <br />
-    <input type="radio" id="exp" name="type" value="exp" />
-    <label for="exp">הסבר על שרשרת</label>
-    <br />
-    <input type="radio" id="playlistFive" name="type" value="playlistFive" />
-    <label for="playlistFive"> תיאור פלייליסט שרשרת5:55</label>
-    <br />
-    <input type="radio" id="playlistFull" name="type" value="playlistFull" />
-    <label for="playlistFull">תיאור פלייליסט שרשרת 30 דק</label>
-    <br />
-    <input type="radio" id="livePost" name="type" value="livePost" />
-    <label for="livePost">פוסט LIVE פייסבוק</label>
-    <br />
+    <label for="shortHeb">סרטון 5:55</label>
+          </td>
+              <td>
+    <input
+      type="radio"
+      id="shortEng"
+      name="type"
+      value="short"
+    />
+    <label for="shortEng">סרטון 5:55</label>
+          </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="tinyHeb" name="type" value="tiny" />
+    <label for="tinyHeb">short</label>
+         </td>
+           <td>
+    <input type="radio" id="tinyEng" name="type" value="tiny" />
+    <label for="tinyEng">short</label>
+         </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="soundHeb" name="type" value="sound" />
+    <label for="soundHeb">סאונד</label>
+              </td>
+           <td>
+    <input type="radio" id="soundEng" name="type" value="sound" />
+    <label for="soundEng">סאונד</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="preHeb" name="type" value="pre" />
+    <label for="preHeb">שיחת הכנה</label>
+              </td>
+           <td>
+    <input type="radio" id="preEng" name="type" value="pre" />
+    <label for="preEng">שיחת הכנה</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="expHeb" name="type" value="exp" />
+    <label for="expHeb">הסבר על שרשרת</label>
+              </td>
+            <td>
+    <input type="radio" id="expEng" name="type" value="exp" />
+    <label for="expEng">הסבר על שרשרת</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="playlistFiveHeb" name="type" value="playlistFive" />
+    <label for="playlistFiveHeb"> תיאור פלייליסט שרשרת5:55</label>
+              </td>
+            <td>
+    <input type="radio" id="playlistFiveEng" name="type" value="playlistFive" />
+    <label for="playlistFiveEng"> תיאור פלייליסט שרשרת5:55</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="playlistFullHeb" name="type" value="playlistFull" />
+    <label for="playlistFullHeb">תיאור פלייליסט שרשרת 30 דק</label>
+              </td>
+          <td>
+    <input type="radio" id="playlistFullEng" name="type" value="playlistFull" />
+    <label for="playlistFullEng">תיאור פלייליסט שרשרת 30 דק</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="livePostHeb" name="type" value="livePost" />
+    <label for="livePostHeb">פוסט LIVE פייסבוק</label>
+              </td>
+          <td>
+    <input type="radio" id="livePostEng" name="type" value="livePost" />
+    <label for="livePostEng">פוסט LIVE פייסבוק</label>
+              </td>
+    </tr>
+      </table>
     <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
     <button onclick="reset()">לאפס נתונים</button>
     <br />
