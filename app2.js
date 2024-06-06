@@ -22,6 +22,8 @@ var linesInSoundHeb=[];
 var linesInPlaylistFiveHeb=[];
 var linesInPlaylistFullHeb=[];
 var linesInLivePostHeb=[];
+var linesInFiveLiveHeb=[];
+var linesInFullVideoLiveHeb=[];
 var linesInFiveEng=[];
 var linesInFullVideoEng=[];
 var linesInPrepareTalkEng=[];
@@ -31,6 +33,8 @@ var linesInSoundEng=[];
 var linesInPlaylistFiveEng=[];
 var linesInPlaylistFullEng=[];
 var linesInLivePostEng=[];
+var linesInFiveLiveEng=[];
+var linesInFullVideoLiveEng=[];
 var currLang="";
 var chainDataURL =
   "https://script.google.com/macros/s/AKfycbz7IgSM1Rhei0PPSgEHwxD_YHtyevYhZt32Mje9asUeGE20_J8a59XYw0xNFJMxjDKXKA/exec";
@@ -54,6 +58,8 @@ function getDescData(){
              linesInPlaylistFiveHeb.push(ele.playlistfive);
              linesInPlaylistFullHeb.push(ele.playlistfull);
              linesInLivePostHeb.push(ele.livepost);
+             linesInFiveLiveHeb.push(ele.fivelive);
+             linesInFullVideoLiveHeb.push(ele.fullvideolive);
          })
             json.data.eng.forEach((ele) => {         
              descLines2.push(ele.lineindescription);
@@ -66,6 +72,8 @@ function getDescData(){
              linesInPlaylistFiveEng.push(ele.playlistfive);
              linesInPlaylistFullEng.push(ele.playlistfull);
              linesInLivePostEng.push(ele.livepost);
+             linesInFiveLiveEng.push(ele.fivelive);
+             linesInFullVideoLiveEng.push(ele.fullvideolive);
          })
         
        
@@ -267,7 +275,10 @@ function submit() {
         showText("playlistFull","heb");
     if(document.getElementById("livePostHeb").checked)
         showText("livePost","heb");
-    
+    if(document.getElementById("fullVideoLiveHeb").checked)
+        showText("fullVideoLive","heb");
+     if(document.getElementById("fiveLiveHeb").checked)
+        showText("fiveLive","heb");
      if (document.getElementById("tinyEng").checked) 
         showText("short","eng");
      if (document.getElementById("shortEng").checked) 
@@ -286,6 +297,10 @@ function submit() {
         showText("playlistFull","eng");
     if(document.getElementById("livePostEng").checked)
         showText("livePost","eng");
+    if(document.getElementById("fullVideoLiveEng").checked)
+        showText("fullVideoLive","eng");
+    if(document.getElementById("fiveLiveEng").checked)
+        showText("fiveLive","eng");
     fixTitle();
      
     
@@ -309,7 +324,9 @@ function showText(type,lang){
                 (type==="sound"&&linesInSoundHeb[i]==="v")||
                 (type==="playlistFive"&&linesInPlaylistFiveHeb[i]==="v")||
                 (type==="playlistFull"&&linesInPlaylistFullHeb[i]==="v")||
-                (type==="livePost"&&linesInLivePostHeb[i]==="v")
+                (type==="livePost"&&linesInLivePostHeb[i]==="v")||
+                (type==="fullVideoLive"&&linesInFullVideoLiveHeb[i]==="v")||
+                (type==="fiveLive"&&linesInFiveLiveHeb[i]==="v")
               ){
                     if(currLine!==""){
                         console.log(currLine);
@@ -335,7 +352,9 @@ function showText(type,lang){
                 (type==="sound"&&linesInSoundEng[i]==="v")||
                 (type==="playlistFive"&&linesInPlaylistFiveEng[i]==="v")||
                 (type==="playlistFull"&&linesInPlaylistFullEng[i]==="v")||
-                (type==="livePost"&&linesInLivePostEng[i]==="v")
+                (type==="livePost"&&linesInLivePostEng[i]==="v")||
+                (type==="fullVideoLive"&&linesInFullVideoLiveEng[i]==="v")||
+                (type==="fiveLive"&&linesInFiveLiveEng[i]==="v")
               ){
                     if(currLine!==""){
                         console.log(currLine);
@@ -357,9 +376,18 @@ function removeAllChildNodes(parent) {
 }
 function swapWithData(line){
     if(line.includes("fullVideoLink")){
-        line=line.replace("fullVideoLink", document.getElementById("linkToFull").value);
-        if(document.getElementById("linkToFull").value==="")
-            line="";
+        if(document.getElementById("linkToFull").value!==""){
+            line=line.replace("fullVideoLink", document.getElementById("linkToFull").value);
+        }
+        if(document.getElementById("linkToFull").value===""){
+            if(line.includes("לראיון המלא:")){
+                line=line.replace("fullVideoLink", document.getElementById("linkToFive").value).replaceAll("לראיון המלא:", "לסיפור555:");
+                console.log(line);
+            }
+            if(document.getElementById("linkToFive").value===""){
+                line="";
+            }
+        }       
     }
      if(line.includes("topicOfStory")){
         line=line.replace("topicOfStory", selectedPerson.topicOfStory);
@@ -439,132 +467,143 @@ function swapWithData(line){
     return line;
 }
 function fixTitle() {
+    console.log(selectedPerson.topicOfStory);
     if(currLang==="heb"){
-  document.getElementById("title").innerHTML="";
-if (document.getElementById("tinyHeb").checked) {
-    document.getElementById("shortHeb").checked;
-  }    
-  var nameOfPerson = selectedPerson.name;
-  const splittedName = nameOfPerson.split(" ");
-    if(document.getElementById("soundHeb").checked){
-        document.getElementById("title").innerHTML="פרק "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
-    }
-  if (
-    document.getElementById("shortHeb").checked ||
-    document.getElementById("longHeb").checked
-  ) {
-    document.getElementById("title").innerHTML =
-      selectedPerson.topicOfStory + " | ";
-  }
-  document.getElementById("title").innerHTML +=
-    nameOfPerson +
-    " | " +
-    selectedPerson.chain +
-    "" +
-    document.getElementById("order").value +
-    " | סיפור555";
-
-  if (document.getElementById("expHeb").checked) {
-    document.getElementById("title").innerHTML += "-השרשרת";
-  }
-  if (document.getElementById("longHeb").checked) {
-    document.getElementById("title").innerHTML += "-הראיון";
-  }
-  if (document.getElementById("preHeb").checked) {
-    document.getElementById("title").innerHTML += "-הכנה";
-  }
-  var firstName = splittedName[0];
-  if (
-    firstName === 'ד"ר' ||
-    firstName === "ד״ר" ||
-    firstName === "דוקטור" ||
-    firstName === "פרופסור" ||
-    firstName === "פרופ'"
-  ) {
-    firstName = splittedName[1];
-  }
-  if (document.getElementById("tinyHeb").checked) {
-    document.getElementById("title").innerHTML =
-      selectedPerson.topicOfStory +
-      " | " +
-      firstName +
-      " | " +
-      selectedPerson.chain +
-      "" +
-      document.getElementById("order").value +
-      " | סיפור55";
-  }
-  if (document.getElementById("playlistFiveHeb").checked) {
-    document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain;
-  }
-  if (document.getElementById("playlistFullHeb").checked) {
-        document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain+"-הראיון" ; 
-    }
+      document.getElementById("title").innerHTML="";
+    if (document.getElementById("tinyHeb").checked) {
+        document.getElementById("shortHeb").checked;
+      }    
+      var nameOfPerson = selectedPerson.name;
+      const splittedName = nameOfPerson.split(" ");
+        if(document.getElementById("soundHeb").checked){
+            document.getElementById("title").innerHTML="פרק "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
+        }
+      if (
+        document.getElementById("shortHeb").checked ||
+        document.getElementById("longHeb").checked||
+          document.getElementById("fiveLiveHeb").checked||
+          document.getElementById("fullVideoLiveHeb").checked
+      ) {
+        document.getElementById("title").innerHTML =
+          selectedPerson.topicOfStory + " | ";
+      }
+      document.getElementById("title").innerHTML +=
+        nameOfPerson +
+        " | " +
+        selectedPerson.chain +
+        "" +
+        document.getElementById("order").value +
+        " | סיפור555";
+      if (document.getElementById("expHeb").checked) {
+        document.getElementById("title").innerHTML += "-השרשרת";
+      }
+      if (document.getElementById("longHeb").checked||
+          document.getElementById("fullVideoLiveHeb").checked) {
+        document.getElementById("title").innerHTML += "-הראיון";
+      }
+      if (document.getElementById("fullVideoLiveHeb").checked||document.getElementById("fiveLiveHeb").checked) {
+          document.getElementById("title").innerHTML += "-LIVE";
+      }
+      if (document.getElementById("preHeb").checked) {
+        document.getElementById("title").innerHTML += "-הכנה";
+      }
+      var firstName = splittedName[0];
+      if (
+        firstName === 'ד"ר' ||
+        firstName === "ד״ר" ||
+        firstName === "דוקטור" ||
+        firstName === "פרופסור" ||
+        firstName === "פרופ'"
+      ) {
+        firstName = splittedName[1];
+      }
+      if (document.getElementById("tinyHeb").checked) {
+        document.getElementById("title").innerHTML =
+          selectedPerson.topicOfStory +
+          " | " +
+          firstName +
+          " | " +
+          selectedPerson.chain +
+          "" +
+          document.getElementById("order").value +
+          " | סיפור55";
+      }
+    
+      if (document.getElementById("playlistFiveHeb").checked) {
+        document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain;
+      }
+      if (document.getElementById("playlistFullHeb").checked) {
+            document.getElementById("title").innerHTML = "סיפור555-"+selectedPerson.chain+"-הראיון" ; 
+        }
     }
     if(currLang==="eng"){
-  document.getElementById("title").innerHTML="";
-if (document.getElementById("tinyEng").checked) {
-    document.getElementById("shortEng").checked;
-  }    
-  var nameOfPerson = selectedPerson.name;
-  const splittedName = nameOfPerson.split(" ");
-    if(document.getElementById("soundEng").checked){
-        document.getElementById("title").innerHTML="Episode "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
-    }
-  if (
-    document.getElementById("shortEng").checked ||
-    document.getElementById("longEng").checked
-  ) {
-    document.getElementById("title").innerHTML =
-      selectedPerson.topicOfStory + " | ";
-  }
-  document.getElementById("title").innerHTML +=
-    nameOfPerson +
-    " | " +
-    selectedPerson.chain +
-    "" +
-    document.getElementById("order").value +
-    " | Story555";
-
-  if (document.getElementById("expEng").checked) {
-    document.getElementById("title").innerHTML += "-The Chain";
-  }
-  if (document.getElementById("longEng").checked) {
-    document.getElementById("title").innerHTML += "-The Interview";
-  }
-  if (document.getElementById("preEng").checked) {
-    document.getElementById("title").innerHTML += "-Preparation";
-  }
-  var firstName = splittedName[0];
-  if (
-    firstName === 'ד"ר' ||
-    firstName === "ד״ר" ||
-    firstName === "דוקטור" ||
-    firstName === "פרופסור" ||
-    firstName === "פרופ'"||
-       firstName === "Dr."||
-      firstName === "Doctor"||
-      firstName === "Professor"
-  ) {
-    firstName = splittedName[1];
-  }
-  if (document.getElementById("tinyEng").checked) {
-    document.getElementById("title").innerHTML =
-      selectedPerson.topicOfStory +
-      " | " +
-      firstName +
-      " | " +
-      selectedPerson.chain +
-      "" +
-      document.getElementById("order").value +
-      " | Story55";
-  }
-  if (document.getElementById("playlistFiveEng").checked) {
-    document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain;
-  }
-  if (document.getElementById("playlistFullEng").checked) {
-        document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain+"-The Interview" ; 
-    }
+      document.getElementById("title").innerHTML="";
+    if (document.getElementById("tinyEng").checked) {
+        document.getElementById("shortEng").checked;
+      }    
+      var nameOfPerson = selectedPerson.name;
+      const splittedName = nameOfPerson.split(" ");
+        if(document.getElementById("soundEng").checked){
+            document.getElementById("title").innerHTML="Episode "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
+        }
+      if (
+        document.getElementById("shortEng").checked ||
+        document.getElementById("longEng").checked||
+          document.getElementById("fiveLiveEng").checked||
+          document.getElementById("fullVideoLiveEng").checked
+      ) {
+        document.getElementById("title").innerHTML =
+          selectedPerson.topicOfStory + " | ";
+      }
+      document.getElementById("title").innerHTML +=
+        nameOfPerson +
+        " | " +
+        selectedPerson.chain +
+        "" +
+        document.getElementById("order").value +
+        " | Story555";   
+      if (document.getElementById("expEng").checked) {
+        document.getElementById("title").innerHTML += "-The Chain";
+      }
+      if (document.getElementById("longEng").checked||document.getElementById("fullVideoLiveEng").checked) {
+        document.getElementById("title").innerHTML += "-The Interview";
+      }
+      if (document.getElementById("fullVideoLiveEng").checked||document.getElementById("fiveLiveEng").checked) {
+          document.getElementById("title").innerHTML += "-LIVE";
+      }
+      if (document.getElementById("preEng").checked) {
+        document.getElementById("title").innerHTML += "-Preparation";
+      }
+      var firstName = splittedName[0];
+      if (
+        firstName === 'ד"ר' ||
+        firstName === "ד״ר" ||
+        firstName === "דוקטור" ||
+        firstName === "פרופסור" ||
+        firstName === "פרופ'"||
+           firstName === "Dr."||
+          firstName === "Doctor"||
+          firstName === "Professor"
+      ) {
+        firstName = splittedName[1];
+      }
+      if (document.getElementById("tinyEng").checked) {
+        document.getElementById("title").innerHTML =
+          selectedPerson.topicOfStory +
+          " | " +
+          firstName +
+          " | " +
+          selectedPerson.chain +
+          "" +
+          document.getElementById("order").value +
+          " | Story55";
+      }
+      if (document.getElementById("playlistFiveEng").checked) {
+        document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain;
+      }
+      if (document.getElementById("playlistFullEng").checked) {
+            document.getElementById("title").innerHTML = "Story555-"+selectedPerson.chain+"-The Interview" ; 
+        }
     }
 }
 function endsWithNumber(str) {
