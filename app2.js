@@ -380,9 +380,9 @@ function swapWithData(line){
             line=line.replace("fullVideoLink", document.getElementById("linkToFull").value);
         }
         if(document.getElementById("linkToFull").value===""){
+            line=line.replace("fullVideoLink", document.getElementById("linkToFive").value);
             if(line.includes("לראיון המלא:")){
-                line=line.replace("fullVideoLink", document.getElementById("linkToFive").value).replaceAll("לראיון המלא:", "לסיפור555:");
-                console.log(line);
+                line=line.replace("לראיון המלא:", "לסיפור555:");
             }
             if(document.getElementById("linkToFive").value===""){
                 line="";
