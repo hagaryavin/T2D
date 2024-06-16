@@ -387,6 +387,12 @@ function swapWithData(line){
             if(document.getElementById("linkToFive").value===""){
                 line="";
             }
+             if(document.getElementById("shortHeb").checked ||
+                document.getElementById("shortEng").checked||
+                document.getElementById("fiveLiveHeb").checked||
+                document.getElementById("fiveLiveEng").checked){
+                    line="";
+            }
         }       
     }
      if(line.includes("topicOfStory")){
