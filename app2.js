@@ -488,7 +488,8 @@ function fixTitle() {
         document.getElementById("shortHeb").checked ||
         document.getElementById("longHeb").checked||
           document.getElementById("fiveLiveHeb").checked||
-          document.getElementById("fullVideoLiveHeb").checked
+          document.getElementById("fullVideoLiveHeb").checked||
+          document.getElementById("livePostHeb").checked
       ) {
         document.getElementById("title").innerHTML =
           selectedPerson.topicOfStory + " | ";
@@ -504,10 +505,12 @@ function fixTitle() {
         document.getElementById("title").innerHTML += "-השרשרת";
       }
       if (document.getElementById("longHeb").checked||
-          document.getElementById("fullVideoLiveHeb").checked) {
+          document.getElementById("fullVideoLiveHeb").checked||
+          document.getElementById("livePostHeb").checked) {
         document.getElementById("title").innerHTML += "-הראיון";
       }
-      if (document.getElementById("fullVideoLiveHeb").checked||document.getElementById("fiveLiveHeb").checked) {
+      if (document.getElementById("fullVideoLiveHeb").checked||document.getElementById("fiveLiveHeb").checked||
+          document.getElementById("livePostHeb").checked) {
           document.getElementById("title").innerHTML += "-LIVE";
       }
       if (document.getElementById("preHeb").checked) {
@@ -556,7 +559,8 @@ function fixTitle() {
         document.getElementById("shortEng").checked ||
         document.getElementById("longEng").checked||
           document.getElementById("fiveLiveEng").checked||
-          document.getElementById("fullVideoLiveEng").checked
+          document.getElementById("fullVideoLiveEng").checked||
+          document.getElementById("livePostEng").checked
       ) {
         document.getElementById("title").innerHTML =
           selectedPerson.topicOfStory + " | ";
@@ -571,10 +575,12 @@ function fixTitle() {
       if (document.getElementById("expEng").checked) {
         document.getElementById("title").innerHTML += "-The Chain";
       }
-      if (document.getElementById("longEng").checked||document.getElementById("fullVideoLiveEng").checked) {
+      if (document.getElementById("longEng").checked||document.getElementById("fullVideoLiveEng").checked||
+          document.getElementById("livePostEng").checked) {
         document.getElementById("title").innerHTML += "-The Interview";
       }
-      if (document.getElementById("fullVideoLiveEng").checked||document.getElementById("fiveLiveEng").checked) {
+      if (document.getElementById("fullVideoLiveEng").checked||document.getElementById("fiveLiveEng").checked||
+          document.getElementById("livePostEng").checked) {
           document.getElementById("title").innerHTML += "-LIVE";
       }
       if (document.getElementById("preEng").checked) {
