@@ -595,7 +595,9 @@ function fixTitle() {
         firstName === "פרופ'"||
            firstName === "Dr."||
           firstName === "Doctor"||
-          firstName === "Professor"
+          firstName === "Professor"||
+     splittedName[0] === "הרב" ||
+     splittedName[0] === "ד״ר" 
       ) {
         firstName = splittedName[1];
       }
