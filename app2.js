@@ -502,7 +502,10 @@ function fixTitle() {
         document.getElementById("order").value +
         " | סיפור555";
       if (document.getElementById("expHeb").checked) {
-        document.getElementById("title").innerHTML += "-השרשרת";
+        document.getElementById("title").innerHTML = nameOfPerson +
+        " | " +
+        selectedPerson.chain +
+        " | סיפור555-השרשרת";
       }
       if (document.getElementById("longHeb").checked||
           document.getElementById("fullVideoLiveHeb").checked||
@@ -522,7 +525,7 @@ function fixTitle() {
         firstName === "ד״ר" ||
         firstName === "דוקטור" ||
         firstName === "פרופסור" ||
-        firstName === "פרופ'" ||
+        firstName === "פרופ'"||
      firstName === "הרב" ||
      firstName === "ד״ר" 
       ) {
@@ -575,7 +578,11 @@ function fixTitle() {
         document.getElementById("order").value +
         " | Story555";   
       if (document.getElementById("expEng").checked) {
-        document.getElementById("title").innerHTML += "-The Chain";
+          
+        document.getElementById("title").innerHTML =nameOfPerson +
+        " | " +
+        selectedPerson.chain +
+        " | Story555-The Chain";
       }
       if (document.getElementById("longEng").checked||document.getElementById("fullVideoLiveEng").checked||
           document.getElementById("livePostEng").checked) {
@@ -597,7 +604,7 @@ function fixTitle() {
         firstName === "פרופ'"||
            firstName === "Dr."||
           firstName === "Doctor"||
-          firstName === "Professor"||
+          firstName === "Professor" ||
      firstName === "הרב" ||
      firstName === "ד״ר" 
       ) {
