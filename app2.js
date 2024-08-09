@@ -128,7 +128,7 @@ function getDataEng(){
           newPerson.interphone = ele.fixedinterviewerphone;
         if (ele.fixedtopicofstory !== "")
           newPerson.topicOfStory = ele.fixedtopicofstory;
-        if (newPerson.aboutTheGuest === "") {
+        if (newPerson.abouttheguestone === "") {
           if (ele.abouttheguesttwo !== "") newPerson.aboutTheGuest = ele.abouttheguesttwo;
         }
         if (ele.fixedabouttheguest !== "")
