@@ -25,6 +25,19 @@
             תלחצי פה לבחירה
           </button>
        <br />
+    בחרי את האורח+שרשרת באנגלית
+            <input
+            type="text"
+            id="peopleListEng"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+          
+          <button onclick="submitDataEng()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+       <br />
     מה המקום בשרשרת של חרוז זה? (מה המספר?)<input
       type="number"
       id="order"
@@ -205,7 +218,17 @@
     <input type="radio" id="fiveLiveEng" name="type" value="livePost" />
     <label for="fiveLiveEng">סרטון 5:55 LIVE</label>
               </td>
-    </tr>     
+    </tr>  
+        <tr>
+          <td>
+    <input type="radio" id="eventHeb" name="type" value="event" />
+    <label for="eventHeb">אירוע ביומן</label>
+              </td>
+          <td>
+    <input type="radio" id="eventEng" name="type" value="event" />
+    <label for="eventEng">אירוע ביומן</label>
+              </td>
+    </tr> 
       </table>
     <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
     <button onclick="reset()">לאפס נתונים</button>
