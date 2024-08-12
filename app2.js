@@ -520,6 +520,9 @@ function swapWithData(line){
             if(line.includes("לראיון המלא:")){
                 line=line.replace("לראיון המלא:", "לסיפור555:");
             }
+            if(line.includes("the interview:")){
+                line=line.replace("the interview:", "Story555:");
+            }
             if(document.getElementById("linkToFive").value===""){
                 line="";
             }
