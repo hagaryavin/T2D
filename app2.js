@@ -134,9 +134,9 @@ function getDataEng(){
         if (ele.fixedabouttheguest !== "")
           newPerson.aboutTheGuest = ele.fixedabouttheguest;
         if (ele.recordingdate !== "")
-          newPerson.date = new Date(ele.recordingdate);
-        if (ele.fixedrecordingdate !== "")
-          newPerson.date = new Date(ele.fixedrecordingdate);
+          newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
+       if (ele.fixedrecordingdate !== "")
+          newPerson.date = changeTimeZone(new Date(ele.fixedrecordingdate), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         allPeople.push(newPerson);
         console.log(allPeople[size]);
@@ -200,10 +200,9 @@ function getData() {
         if (ele.fixedabouttheguest !== "")
           newPerson.aboutTheGuest = ele.fixedabouttheguest;
         if (ele.recordingdate !== "")
-          newPerson.date = new Date(ele.recordingdate);
-        if (ele.fixedrecordingdate !== "")
-          newPerson.date = new Date(ele.fixedrecordingdate);
-
+          newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
+       if (ele.fixedrecordingdate !== "")
+          newPerson.date = changeTimeZone(new Date(ele.fixedrecordingdate), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "") newPerson.subtitle = ele.fixedsubtitle;
         allPeople.push(newPerson);
@@ -792,4 +791,10 @@ function fixTitle() {
 function endsWithNumber(str) {
   str = str.trim();
   return isNaN(str.slice(-1)) ? false : true;
+}
+function changeTimeZone(date, timeZone) {
+  if (typeof date === 'string') {
+    return new Date(new Date(date).toLocaleString('en-US', { timeZone }));
+  }
+  return new Date(date.toLocaleString('en-US', { timeZone }));
 }
