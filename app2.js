@@ -564,9 +564,9 @@ function swapWithData(line){
             line="";
     }
     if(line.includes("chainName")){
-        if(!line.includes("תגיות"))
+        if(!line.includes("תגיות")&&!line.includes("Tags"))
             line=line.replace("chainName", currChain.name);
-        if(line.includes("תגיות")){
+        if(line.includes("תגיות")||line.includes("Tags")){
             line=line.replace("chainName", fixTags(currChain.name));
         }
         if(currChain.name==="")
