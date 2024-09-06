@@ -108,7 +108,7 @@ function getDataEng(){
           date: "",
           explainVideo: ele.linkexplain,
           prepTalk: ele.preptalk,
-          aboutTheGuest: ele.abouttheguestone,
+          abouttheguest: ele.abouttheguestone,
           facebook: ele.facebook,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
@@ -128,11 +128,11 @@ function getDataEng(){
           newPerson.interphone = ele.fixedinterviewerphone;
         if (ele.fixedtopicofstory !== "")
           newPerson.topicOfStory = ele.fixedtopicofstory;
-        if (newPerson.abouttheguestone === "") {
-          if (ele.abouttheguesttwo !== "") newPerson.aboutTheGuest = ele.abouttheguesttwo;
+        if (newPerson.abouttheguest === "") {
+          if (ele.abouttheguesttwo !== "") newPerson.abouttheguest = ele.abouttheguesttwo;
         }
         if (ele.fixedabouttheguest !== "")
-          newPerson.aboutTheGuest = ele.fixedabouttheguest;
+          newPerson.abouttheguest = ele.fixedabouttheguest;
         if (ele.recordingdate !== "")
           newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
        if (ele.fixedrecordingdate !== "")
@@ -173,7 +173,7 @@ function getData() {
           date: "",
           explainVideo: ele.linkexplain,
           prepTalk: ele.preptalk,
-          aboutTheGuest: ele.abouttheguest,
+          abouttheguest: ele.abouttheguest,
           facebook: ele.facebook,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
@@ -198,7 +198,7 @@ function getData() {
         if (ele.fixedtopicofstory !== "")
           newPerson.topicOfStory = ele.fixedtopicofstory;
         if (ele.fixedabouttheguest !== "")
-          newPerson.aboutTheGuest = ele.fixedabouttheguest;
+          newPerson.abouttheguest = ele.fixedabouttheguest;
         if (ele.recordingdate !== "")
           newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
        if (ele.fixedrecordingdate !== "")
@@ -539,8 +539,8 @@ function swapWithData(line){
             line="";
     }
      if(line.includes("aboutTheGuest")){
-        line=line.replace("aboutTheGuest", selectedPerson.aboutTheGuest);
-        if(selectedPerson.aboutTheGuest==="")
+        line=line.replace("aboutTheGuest", selectedPerson.abouttheguest);
+        if(selectedPerson.abouttheguest==="")
             line="";
     }
     if(line.includes("guestName")){
