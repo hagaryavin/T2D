@@ -717,7 +717,7 @@ function fixTitle() {
       var nameOfPerson = selectedPerson.name;
       const splittedName = nameOfPerson.split(" ");
         if(document.getElementById("soundEng").checked){
-            document.getElementById("title").innerHTML="Episode "+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
+            document.getElementById("title").innerHTML="Ep"+selectedPerson.id+": "+selectedPerson.topicOfStory + " | ";
         }
       if (
         document.getElementById("shortEng").checked ||
