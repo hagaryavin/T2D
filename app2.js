@@ -679,6 +679,9 @@ function fixTitle() {
         firstName === "דוקטור" ||
         firstName === "פרופסור" ||
         firstName === "פרופ'"||
+            firstName === "Dr."||
+          firstName === "Doctor"||
+          firstName === "Professor" ||
      firstName === "הרב" ||
      firstName === "ד״ר" 
       ) {
