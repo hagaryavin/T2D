@@ -106,6 +106,7 @@ function getDataEng(){
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
           date: "",
+            hour:"",
           explainVideo: ele.linkexplain,
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguestone,
@@ -137,6 +138,10 @@ function getDataEng(){
           newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
        if (ele.fixedrecordingdate !== "")
           newPerson.date = changeTimeZone(new Date(ele.fixedrecordingdate), 'Asia/Jerusalem');
+        if (ele.recordinghour !== "")
+          newPerson.hour = changeTimeZone(new Date(ele.recordinghour), 'Asia/Jerusalem');
+        if (ele.fixedrecordinghour !== "")
+          newPerson.hour = changeTimeZone(new Date(ele.fixedrecordinghour), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         allPeople.push(newPerson);
         console.log(allPeople[size]);
@@ -171,6 +176,7 @@ function getData() {
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
           date: "",
+            hour:"",
           explainVideo: ele.linkexplain,
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguest,
@@ -203,6 +209,10 @@ function getData() {
           newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
        if (ele.fixedrecordingdate !== "")
           newPerson.date = changeTimeZone(new Date(ele.fixedrecordingdate), 'Asia/Jerusalem');
+        if (ele.recordinghour !== "")
+          newPerson.hour = changeTimeZone(new Date(ele.recordinghour), 'Asia/Jerusalem');
+        if (ele.fixedrecordinghour !== "")
+          newPerson.hour = changeTimeZone(new Date(ele.fixedrecordinghour), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "") newPerson.subtitle = ele.fixedsubtitle;
         allPeople.push(newPerson);
@@ -349,8 +359,15 @@ function fixDate(str) {
   var year = str.getFullYear();
   var month = str.getMonth() + 1;
   var day = str.getDate();
-
   return day + "/" + month + "/" + year;
+}
+function fixHour(str) {
+  var hour = str.getHours();
+  var minute = str.getMinutes();
+ if (minute < 10){
+     return hour+":0" +minute;
+ }
+ return hour+":"+minute;
 }
 function fixTags(str){
 
@@ -596,6 +613,12 @@ function swapWithData(line){
         if(selectedPerson.date!=="")
             line=line.replace("date", fixDate(selectedPerson.date));
         if(selectedPerson.date==="")
+            line="";
+    }
+     if(line.includes("hour")){
+        if(selectedPerson.hour!=="")
+            line=line.replace("hour", fixHour(selectedPerson.hour));
+        if(selectedPerson.hour==="")
             line="";
     }
     if(line.includes("interviewerName")){
