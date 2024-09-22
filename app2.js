@@ -346,7 +346,11 @@ function reset() {
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
 }
 function copycat(id) {
+    
   var text = document.getElementById(id).innerText;
+    while(text.includes("_שורה_ריקה_")){
+        text=text.replace("_שורה_ריקה_","");
+    }
   var elem = document.createElement("textarea");
   document.body.appendChild(elem);
   elem.value = text;
@@ -475,10 +479,18 @@ function showText(type,lang){
                 (type==="fiveLive"&&linesInFiveLiveHeb[i]==="v")||
                 (type==="event"&&linesInEventHeb[i]==="v")
               ){
-                    if(currLine!==""){
+                    if(currLine!==""&&currLine!=="_שורה_ריקה_"){
                         console.log(currLine);
                         var testH4 = document.createElement("h4");
                         testH4.innerHTML = currLine;
+                        testDiv.append(testH4);
+                    }
+                    if(currLine==="_שורה_ריקה_"){
+                        console.log(currLine);
+                      var testH4 = document.createElement("h4");
+                        testH4.innerText = "<br>";
+                        testH4.innerHTML = currLine;
+                        testH4.style.color="white";
                         testDiv.append(testH4);
                     }
 
@@ -508,10 +520,18 @@ function showText(type,lang){
                 (type==="fiveLive"&&linesInFiveLiveEng[i]==="v")||
                 (type==="event"&&linesInEventEng[i]==="v")
               ){
-                    if(currLine!==""){
+                    if(currLine!==""&&currLine!=="_שורה_ריקה_"){
                         console.log(currLine);
                         var testH4 = document.createElement("h4");
                         testH4.innerHTML = currLine;
+                        testDiv.append(testH4);
+                    }
+                    if(currLine==="_שורה_ריקה_"){
+                        console.log(currLine);
+                      var testH4 = document.createElement("h4");
+                        testH4.innerText = "<br>";
+                        testH4.innerHTML = currLine;
+                        testH4.style.color="white";
                         testDiv.append(testH4);
                     }
 
