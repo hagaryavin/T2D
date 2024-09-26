@@ -6,12 +6,19 @@
       href="https://cdn-icons-png.flaticon.com/512/324/324104.png"
     />
     <title>T2D</title>
-    <meta charset="UTF-8"  />
+    <meta charset="UTF-8" />
 
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+      <div id="waitArea">
+        <div id="loader" class="loader"></div>  
+      <h1 id="waitText">נא להמתין מספר שניות</h1>
+      </div>
+      
+      
+      <div id="allContent">
    בחרי את האורח+שרשרת
             <input
             type="text"
@@ -237,10 +244,12 @@
     <button onclick="copycat('title')" id="titleCopy">להעתקת הכותרת</button>
     <button onclick="copycat('text')" id="textCopy">להעתקת התיאור</button>
     <br />
+    
     <h2 id="title">כך נראית התבנית לפני מילוי הפרטים:</h2>
     <br />
     <div id="text"></div>
     <br />
+    </div>
     <script src="app2.js"></script> 
   </body>
   </html>
