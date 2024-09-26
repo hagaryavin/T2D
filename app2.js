@@ -1,3 +1,8 @@
+setTimeout(() => {
+  const loader = document.getElementById("waitArea");
+  loader.style.display = "none";
+    document.getElementById("allContent").style.visibility="visible";
+}, 7050);
 var options = document.getElementById("people");
 var optionsEng = document.getElementById("peopleEng");
 var theImportantT2DURL="https://script.google.com/macros/s/AKfycbzcWW--rxYPZWO-fogfe6Frn1YXVejatzNlBU53UMNOToe50OFC-cv_ndXojlLOePU4/exec";
@@ -69,11 +74,12 @@ var titles={
 };
 var chainDataURL =
   "https://script.google.com/macros/s/AKfycbz7IgSM1Rhei0PPSgEHwxD_YHtyevYhZt32Mje9asUeGE20_J8a59XYw0xNFJMxjDKXKA/exec";
-getDescData();
-getTitlesData();
-getChainData();
 getData();
 getDataEng();
+getTitlesData();
+getDescData();
+getChainData();
+
 function getDescData(){
     fetch(theImportantT2DURL)
     .then((res) => {
