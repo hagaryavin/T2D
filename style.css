@@ -19,6 +19,7 @@ textarea {
   background-color: #f8f8f8;
   resize: none;
 }
+
 #text {
   right: 200px;
   position: absolute;
@@ -30,3 +31,54 @@ textarea {
 h4{
    margin: 0; 
 }
+#allContent{
+      visibility: hidden;
+          }
+#waitArea{
+       width: 100px;
+        height: 100px;
+    margin: 0 auto;
+      position: relative;
+
+          }
+#waitText{
+          position: absolute;
+ 
+    font-family:sans-serif;
+    color:blue;
+    text-align: center;
+  animation: bounce 2s infinite;
+    
+          }
+.loader {
+      position: absolute;
+
+      margin: 0 auto; 
+        width: 100px;
+        height: 100px;
+        margin: 0 auto; 
+        border: 4px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 4px solid #3498db;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+        }
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-30px);
+          }
+          60% {
+            transform: translateY(-15px);
+          }
+        }
+
