@@ -473,57 +473,138 @@ function fixChain(chain) {
 function submit() {
     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
+    var type="";
+    var lang="";
      if (document.getElementById("tinyHeb").checked) 
-        showText("short","heb");
+         {
+             type="short";
+             lang="heb";
+         }
+        
      if (document.getElementById("shortHeb").checked) 
-        showText("five","heb");
+       
+    {
+             type="five";
+             lang="heb";
+         }
     if(document.getElementById("longHeb").checked)
-        showText("fullVideo","heb");
+    {
+             type="fullVideo";
+             lang="heb";
+         }
     if(document.getElementById("soundHeb").checked)
-        showText("sound","heb");
+    
+    {
+             type="sound";
+             lang="heb";
+         }
     if(document.getElementById("preHeb").checked)
-        showText("prepareTalk","heb");
+        
+    {
+             type="prepareTalk";
+             lang="heb";
+         }
     if(document.getElementById("expHeb").checked)
-        showText("explainChain","heb");
+        
+    {
+             type="explainChain";
+             lang="heb";
+         }
     if(document.getElementById("playlistFiveHeb").checked)
-        showText("playlistFive","heb");
+    {
+             type="playlistFive";
+             lang="heb";
+         }
     if(document.getElementById("playlistFullHeb").checked)
-        showText("playlistFull","heb");
+    {
+             type="playlistFull";
+             lang="heb";
+         }
     if(document.getElementById("livePostHeb").checked)
-        showText("livePost","heb");
+    {
+             type="livePost";
+             lang="heb";
+         }
     if(document.getElementById("fullVideoLiveHeb").checked)
-        showText("fullVideoLive","heb");
+    {
+             type="fullVideoLive";
+             lang="heb";
+         }
      if(document.getElementById("fiveLiveHeb").checked)
-        showText("fiveLive","heb");
+    {
+             type="fiveLive";
+             lang="heb";
+         }
       if(document.getElementById("eventHeb").checked)
-        showText("event","heb");
+    {
+             type="event";
+             lang="heb";
+         }
      if (document.getElementById("tinyEng").checked) 
-        showText("short","eng");
+    {
+             type="short";
+             lang="eng";
+         }
      if (document.getElementById("shortEng").checked) 
-        showText("five","eng");
+    {
+             type="five";
+             lang="eng";
+         }
     if(document.getElementById("longEng").checked)
-        showText("fullVideo","eng");
+    {
+             type="fullVideo";
+             lang="eng";
+         }
     if(document.getElementById("soundEng").checked)
-        showText("sound","eng");
+    {
+             type="sound";
+             lang="eng";
+         }
     if(document.getElementById("preEng").checked)
-        showText("prepareTalk","eng");
+    {
+             type="prepareTalk";
+             lang="eng";
+         }
     if(document.getElementById("expEng").checked)
-        showText("explainChain","eng");
+    {
+             type="explainChain";
+             lang="eng";
+         }
     if(document.getElementById("playlistFiveEng").checked)
-        showText("playlistFive","eng");
+    {
+             type="playlistFive";
+             lang="eng";
+         }
     if(document.getElementById("playlistFullEng").checked)
-        showText("playlistFull","eng");
+    {
+             type="playlistFull";
+             lang="eng";
+         }
     if(document.getElementById("livePostEng").checked)
-        showText("livePost","eng");
+    {
+             type="livePost";
+             lang="eng";
+         }
     if(document.getElementById("fullVideoLiveEng").checked)
-        showText("fullVideoLive","eng");
+    {
+             type="fullVideoLive";
+             lang="eng";
+         }
     if(document.getElementById("fiveLiveEng").checked)
-        showText("fiveLive","eng");
+    {
+             type="fiveLive";
+             lang="eng";
+         }
     if(document.getElementById("eventEng").checked)
-        showText("event","eng");
+    {
+             type="event";
+             lang="eng";
+         }
+    showText(type,lang);
+    fixTitle(type,lang);
 }
 function showText(type,lang){
-    fixTitle(type,lang);
+    
     currLang=lang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
