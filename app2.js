@@ -189,6 +189,7 @@ function getDataEng(){
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
             id: ele.id,
+            ide:ele.ide,
           row: rowCount,
         };
 
@@ -259,6 +260,7 @@ function getData() {
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
             id: ele.id,
+            ide:ele.id,
           row: rowCount,
         };
 
@@ -473,8 +475,8 @@ function fixChain(chain) {
 function submit() {
     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
-    var type="";
-    var lang="";
+    var type="five";
+    var lang="heb";
      if (document.getElementById("tinyHeb").checked) 
          {
              type="short";
@@ -604,7 +606,6 @@ function submit() {
     fixTitle(type,lang);
 }
 function showText(type,lang){
-    
     currLang=lang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
@@ -714,6 +715,9 @@ function swapData4titles(line){
     }
     if(line.includes("ID")){
         line=line.replace("ID", selectedPerson.id);
+    }
+    if(line.includes("IdE")){
+        line=line.replace("IdE", selectedPerson.ide);
     }
     if(line.includes("firstNameOfGuest")){
         line=line.replace("firstNameOfGuest", fixFirstName(selectedPerson.name));
