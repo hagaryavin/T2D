@@ -219,11 +219,11 @@ function getDataEng(){
           newPerson.hour = changeTimeZone(new Date(ele.fixedrecordinghour), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         allPeople.push(newPerson);
-        console.log(allPeople[size]);
         personOption = document.createElement("option");
         personOption.value = newPerson.name + " + " + newPerson.chain;
         personOption.id = rowCount;
-        if (newPerson.name !== "" || newPerson.chain !== "") {
+        if (ele.fixedrecordingdate!=="ללא תאריך"&&(newPerson.name !== "" || newPerson.chain !== "")) {
+          console.log(allPeople[size]);
           optionsEng.append(personOption);
         }
         rowCount++;
@@ -292,11 +292,11 @@ function getData() {
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "") newPerson.subtitle = ele.fixedsubtitle;
         allPeople.push(newPerson);
-        console.log(allPeople[size]);
         personOption = document.createElement("option");
         personOption.value = newPerson.name + " + " + newPerson.chain;
         personOption.id = rowCount;
-        if (newPerson.name !== "" || newPerson.chain !== "") {
+        if (ele.fixedrecordingdate!=="ללא תאריך"&&(newPerson.name !== "" || newPerson.chain !== "")) {
+          console.log(allPeople[size]);
           options.append(personOption);
         }
         rowCount++;
