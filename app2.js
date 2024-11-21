@@ -871,7 +871,9 @@ function fixFirstName(fullName){
           firstName === "Doctor"||
           firstName === "Professor" ||
      firstName === "הרב" ||
-     firstName === "ד״ר" 
+     firstName === "ד״ר" ||
+     firstName === 'עו"ד'||
+      firstName === 'עו״ד'
       ) {
         firstName = splittedName[1];
       }
