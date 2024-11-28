@@ -705,9 +705,6 @@ function swapData4titles(line){
     if(line.includes("topicOfStory")){
         line=line.replace("topicOfStory", selectedPerson.topicOfStory);
     }
-    if(line.includes("message")){
-        line=line.replace("message", selectedPerson.message);
-    }
     if(line.includes("guestName")){
         line=line.replace("guestName", selectedPerson.name);
     }
