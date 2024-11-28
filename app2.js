@@ -246,7 +246,7 @@ function getData() {
            guestphone: ele.phone,
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
-          subtitle: ele.subtitle,
+          message: ele.subtitle,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -290,7 +290,8 @@ function getData() {
         if (ele.fixedrecordinghour !== "")
           newPerson.hour = changeTimeZone(new Date(ele.fixedrecordinghour), 'Asia/Jerusalem');
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
-        if (ele.fixedsubtitle !== "") newPerson.subtitle = ele.fixedsubtitle;
+        if (ele.fixedsubtitle !== "")
+            newPerson.message = ele.fixedsubtitle;
         allPeople.push(newPerson);
         personOption = document.createElement("option");
         personOption.value = newPerson.name + " + " + newPerson.chain;
@@ -704,6 +705,9 @@ function swapData4titles(line){
     if(line.includes("topicOfStory")){
         line=line.replace("topicOfStory", selectedPerson.topicOfStory);
     }
+    if(line.includes("message")){
+        line=line.replace("message", selectedPerson.message);
+    }
     if(line.includes("guestName")){
         line=line.replace("guestName", selectedPerson.name);
     }
@@ -751,6 +755,11 @@ function swapWithData(line){
      if(line.includes("topicOfStory")){
         line=line.replace("topicOfStory", selectedPerson.topicOfStory);
         if(selectedPerson.topicOfStory==="")
+            line="";
+    }
+    if(line.includes("message")){
+        line=line.replace("message", selectedPerson.message);
+        if(selectedPerson.message==="")
             line="";
     }
      if(line.includes("aboutTheGuest")){
