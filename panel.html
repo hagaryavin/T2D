@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/324/324104.png"
+    />
+    <title>T2D - פאנל</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    
+   בחרי את האורח+שרשרת
+            <input
+            type="text"
+            id="peopleList1"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+           <input
+            type="text"
+            id="peopleList2"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+           <input
+            type="text"
+            id="peopleList3"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+          <button onclick="submitData()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+       <br />
+    בחרי את האורח+שרשרת באנגלית
+            <input
+            type="text"
+            id="peopleListEng1"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+           <input
+            type="text"
+            id="peopleListEng2"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+       <input
+            type="text"
+            id="peopleListEng3"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+          <button onclick="submitDataEng()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+       <br />
+    מה מספר הפאנל?<input
+      type="number"
+      id="order"
+      name="order"
+      min="1"
+      autocomplete="off"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לפלייליסט
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToPlaylist"
+      name="linkToPlaylist"
+      spellcheck="false"
+    /><br />
+      <table>
+          <tr>
+              <td>
+                  <u>
+                  עברית
+              </u>
+                      </td>
+              <td>
+                  <u>
+                  אנגלית
+                  </u>
+                      </td>
+          </tr>
+      <tr> 
+          <td>
+    <input type="radio" id="panelHeb" name="type" value="panel" checked="checked"/>
+    <label for="panelHeb">פאנל</label>
+              </td>
+          <td>
+    <input type="radio" id="panelEng" name="type" value="panel" />
+    <label for="panelEng">פאנל</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="panelPostHeb" name="type" value="panelPost" />
+    <label for="panelPostHeb">פוסט LIVE פייסבוק</label>
+              </td>
+          <td>
+    <input type="radio" id="panelPostEng" name="type" value="panelPost" />
+    <label for="panelPostEng">פוסט LIVE פייסבוק</label>
+              </td>
+    </tr>  
+        <tr>
+          <td>
+    <input type="radio" id="panelEventHeb" name="type" value="panelEvent" />
+    <label for="panelEventHeb">אירוע ביומן</label>
+              </td>
+          <td>
+    <input type="radio" id="panelEventEng" name="type" value="panelEvent" />
+    <label for="panelEventEng">אירוע ביומן</label>
+              </td>
+    </tr> 
+      </table>
+    <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
+    <button onclick="reset()">לאפס נתונים</button>
+    <br />
+    <br />
+    <button onclick="copycat('title')" id="titleCopy">להעתקת הכותרת</button>
+    <button onclick="copycat('text')" id="textCopy">להעתקת התיאור</button>
+    <br />
+    
+    <h2 id="title">כך נראית התבנית לפני מילוי הפרטים:</h2>
+    <br />
+    <div id="text"></div>
+    <br />
+    <script src="panel.js"></script> 
+  </body>
+  </html>
+  
