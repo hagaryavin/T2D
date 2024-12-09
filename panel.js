@@ -284,6 +284,41 @@ function getChainData() {
     });
 }
 function submitData() {
+    selectedData.guestName1="";
+      selectedData.topicOfStory1="";
+        selectedData.message1="";
+        selectedData.aboutTheGuest1="";
+        selectedData.facebookLink1="";
+        selectedData.instagramLink1="";
+        selectedData.websiteLink1="";
+        selectedData.email1="";
+        selectedData.guestPhone1="";
+        selectedData.order1="";
+        selectedData.guestName2="";
+        selectedData.topicOfStory2="";
+        selectedData.message2="";
+        selectedData.aboutTheGuest2="";
+        selectedData.facebookLink2="";
+        selectedData.instagramLink2="";
+        selectedData.websiteLink2="";
+        selectedData.email2="";
+        selectedData.guestPhone2="";
+        selectedData.order2="";
+        selectedData.guestName3="";
+        selectedData.topicOfStory3="";
+        selectedData.message3="";
+        selectedData.aboutTheGuest3="";
+        selectedData.facebookLink3="";
+        selectedData.instagramLink3="";
+        selectedData.websiteLink3="";
+        selectedData.email3="";
+        selectedData.guestPhone3="";
+       selectedData.order3="";
+        selectedData.chainName="";
+        selectedData.date="";
+        selectedData.hour="";
+        selectedData.interviewerName="";
+        selectedData.interviewerPhone="";
     var nameAndChain1 = document.getElementById("peopleList1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleList2").value.split(" + ");
     
@@ -449,6 +484,41 @@ function submitData() {
     }
 }
 function submitDataEng() {
+    selectedData.guestName1="";
+      selectedData.topicOfStory1="";
+        selectedData.message1="";
+        selectedData.aboutTheGuest1="";
+        selectedData.facebookLink1="";
+        selectedData.instagramLink1="";
+        selectedData.websiteLink1="";
+        selectedData.email1="";
+        selectedData.guestPhone1="";
+        selectedData.order1="";
+        selectedData.guestName2="";
+        selectedData.topicOfStory2="";
+        selectedData.message2="";
+        selectedData.aboutTheGuest2="";
+        selectedData.facebookLink2="";
+        selectedData.instagramLink2="";
+        selectedData.websiteLink2="";
+        selectedData.email2="";
+        selectedData.guestPhone2="";
+        selectedData.order2="";
+        selectedData.guestName3="";
+        selectedData.topicOfStory3="";
+        selectedData.message3="";
+        selectedData.aboutTheGuest3="";
+        selectedData.facebookLink3="";
+        selectedData.instagramLink3="";
+        selectedData.websiteLink3="";
+        selectedData.email3="";
+        selectedData.guestPhone3="";
+       selectedData.order3="";
+        selectedData.chainName="";
+        selectedData.date="";
+        selectedData.hour="";
+        selectedData.interviewerName="";
+        selectedData.interviewerPhone="";
     var nameAndChain1 = document.getElementById("peopleListEng1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleListEng2").value.split(" + ");
     
