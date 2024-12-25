@@ -229,6 +229,7 @@ function getData() {
         if (newPerson.chain === "") {
           if (ele.chaintwo !== "") newPerson.chain = ele.chaintwo;
           if (ele.chainthree !== "") newPerson.chain = ele.chainthree;
+          if (ele.chainfour !== "") newPerson.chain = ele.chainfour;
         }
         if (ele.fixedchain !== "") newPerson.chain = ele.fixedchain;
         newPerson.chain = fixChain(newPerson.chain);
@@ -322,7 +323,6 @@ function submitData() {
     var nameAndChain1 = document.getElementById("peopleList1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleList2").value.split(" + ");
     
-    if(nameAndChain1[1]===nameAndChain2[1]){
   for (var i = 0; i < allPeople.length; i++) {
     
     if (
@@ -478,10 +478,7 @@ function submitData() {
     
     }    
   document.getElementById("linkToPlaylist").value = currChain.playlist;
-    }
-    else{
-        alert("החרוזים שנבחרו לא באותה שרשרת!")
-    }
+
 }
 function submitDataEng() {
     selectedData.guestName1="";
