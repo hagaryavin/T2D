@@ -247,6 +247,7 @@ function getData() {
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
           message: ele.subtitle,
+            virtue: ele.virtue,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -293,6 +294,8 @@ function getData() {
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "")
             newPerson.message = ele.fixedsubtitle;
+        if (ele.fixedvirtue !== "")
+            newPerson.virtue = ele.fixedvirtue;
         allPeople.push(newPerson);
         personOption = document.createElement("option");
         personOption.value = newPerson.name + " + " + newPerson.chain;
@@ -758,6 +761,11 @@ function swapWithData(line){
     if(line.includes("message")){
         line=line.replace("message", selectedPerson.message);
         if(selectedPerson.message==="")
+            line="";
+    }
+     if(line.includes("virtue")){
+        line=line.replace("virtue", selectedPerson.virtue);
+        if(selectedPerson.virtue==="")
             line="";
     }
      if(line.includes("aboutTheGuest")){
