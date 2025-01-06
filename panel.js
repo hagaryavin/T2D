@@ -8,6 +8,7 @@ var newPerson = {};
 var selectedData = {
         guestName1:"",
         topicOfStory1:"",
+        virtue1:"",
         message1:"",
         aboutTheGuest1:"",
         facebookLink1:"",
@@ -19,6 +20,7 @@ var selectedData = {
         guestName2:"",
         topicOfStory2:"",
         message2:"",
+        virtue2:"",
         aboutTheGuest2:"",
         facebookLink2:"",
         instagramLink2:"",
@@ -29,6 +31,7 @@ var selectedData = {
         guestName3:"",
         topicOfStory3:"",
         message3:"",
+        virtue3:"",
         aboutTheGuest3:"",
         facebookLink3:"",
         instagramLink3:"",
@@ -206,6 +209,7 @@ function getData() {
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
           message: ele.subtitle,
+           virtue: ele.virtue,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -252,6 +256,8 @@ function getData() {
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "")
             newPerson.message = ele.fixedsubtitle;
+         if (ele.fixedvirtue!== "")
+            newPerson.virtue = ele.fixedvirtue;
         allPeople.push(newPerson);
         personOption = document.createElement("option");
         personOption.value = newPerson.name + " + " + newPerson.chain;
@@ -287,6 +293,7 @@ function getChainData() {
 function submitData() {
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
+    selectedData.virtue1="";
         selectedData.message1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
@@ -297,6 +304,7 @@ function submitData() {
         selectedData.order1="";
         selectedData.guestName2="";
         selectedData.topicOfStory2="";
+    selectedData.virtue2="";
         selectedData.message2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
@@ -307,6 +315,7 @@ function submitData() {
         selectedData.order2="";
         selectedData.guestName3="";
         selectedData.topicOfStory3="";
+    selectedData.virtue3="";
         selectedData.message3="";
         selectedData.aboutTheGuest3="";
         selectedData.facebookLink3="";
@@ -334,6 +343,7 @@ function submitData() {
      selectedData.guestName1=allPeople[i].name;
     selectedData.topicOfStory1=allPeople[i].topicOfStory;
     selectedData.message1=allPeople[i].message;
+        selectedData.virtue1=allPeople[i].virtue;
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
     selectedData.instagramLink1=allPeople[i].instagram;
@@ -392,6 +402,7 @@ function submitData() {
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
     selectedData.message2=allPeople[i].message;
+        selectedData.virtue2=allPeople[i].virtue;
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -452,6 +463,7 @@ function submitData() {
      selectedData.guestName3=allPeople[i].name;
     selectedData.topicOfStory3=allPeople[i].topicOfStory;
     selectedData.message3=allPeople[i].message;
+        selectedData.virtue3=allPeople[i].virtue;
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
     selectedData.instagramLink3=allPeople[i].instagram;
@@ -483,6 +495,7 @@ function submitData() {
 function submitDataEng() {
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
+        selectedData.virtue1="";
         selectedData.message1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
@@ -493,6 +506,7 @@ function submitDataEng() {
         selectedData.order1="";
         selectedData.guestName2="";
         selectedData.topicOfStory2="";
+    selectedData.virtue2="";
         selectedData.message2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
@@ -504,6 +518,7 @@ function submitDataEng() {
         selectedData.guestName3="";
         selectedData.topicOfStory3="";
         selectedData.message3="";
+    selectedData.virtue3="";
         selectedData.aboutTheGuest3="";
         selectedData.facebookLink3="";
         selectedData.instagramLink3="";
@@ -531,6 +546,7 @@ function submitDataEng() {
      selectedData.guestName1=allPeople[i].name;
     selectedData.topicOfStory1=allPeople[i].topicOfStory;
     selectedData.message1="";
+       selectedData.virtue1="";
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
     selectedData.instagramLink1=allPeople[i].instagram;
@@ -589,6 +605,7 @@ function submitDataEng() {
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
     selectedData.message2="";
+       selectedData.virtue2="";
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -649,6 +666,7 @@ function submitDataEng() {
      selectedData.guestName3=allPeople[i].name;
     selectedData.topicOfStory3=allPeople[i].topicOfStory;
     selectedData.message3="";
+       selectedData.virtue3="";
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
     selectedData.instagramLink3=allPeople[i].instagram;
@@ -912,6 +930,11 @@ function swapWithData(line){
         if(selectedData.message1==="")
             line="";
     }
+   if(line.includes("virtue1")){
+        line=line.replace("virtue1", selectedData.virtue1);
+        if(selectedData.virtue1==="")
+            line="";
+    }
      if(line.includes("aboutTheGuest1")){
         line=line.replace("aboutTheGuest1", selectedData.aboutTheGuest1);
         if(selectedData.aboutTheGuest1==="")
@@ -962,6 +985,11 @@ function swapWithData(line){
         if(selectedData.message2==="")
             line="";
     }
+   if(line.includes("virtue2")){
+        line=line.replace("virtue2", selectedData.virtue2);
+        if(selectedData.virtue2==="")
+            line="";
+    }
      if(line.includes("aboutTheGuest2")){
         line=line.replace("aboutTheGuest2", selectedData.aboutTheGuest2);
         if(selectedData.aboutTheGuest2==="")
@@ -1010,6 +1038,11 @@ function swapWithData(line){
     if(line.includes("message3")){
         line=line.replace("message3", selectedData.message3);
         if(selectedData.message3==="")
+            line="";
+    }
+   if(line.includes("virtue3")){
+        line=line.replace("virtue3", selectedData.virtue3);
+        if(selectedData.virtue3==="")
             line="";
     }
      if(line.includes("aboutTheGuest3")){
