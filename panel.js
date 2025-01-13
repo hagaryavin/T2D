@@ -5,6 +5,7 @@ var url =
   "https://script.google.com/macros/s/AKfycbxDcej67zrhC5zOxbGN76qFBZc3AWbP4UUhexUqPRnzN79Lb5ZmTl5PMgYNFihoXXl3Kg/exec";
 var urlEng="https://script.google.com/macros/s/AKfycbwif1D1ZdoI1iYaL2Hya5Jke8UIFaoPxMo2Jkvd3cNytK35UIGbJZ0NKwhiYJQgana8-A/exec";
 var newPerson = {};
+var sameChain=false;
 var selectedData = {
         guestName1:"",
         topicOfStory1:"",
@@ -52,6 +53,7 @@ var personOption;
 var allChains = [];
 var newChain = {};
 var currChain = {};
+var chainOption;
 var descLines1=[];
 var descLines2=[];
 var linesInPanelHeb=[];
@@ -101,6 +103,7 @@ function getDescData(){
     })
     
 }
+
 function getTitlesData(){
     fetch(theImportantT2DURL)
     .then((res) => {
@@ -119,7 +122,6 @@ function getTitlesData(){
                  titles.panelEventEng=ele.panelevent
              }
          })
-        console.log(titles);
     })
     
 }
@@ -209,7 +211,7 @@ function getData() {
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
           message: ele.subtitle,
-           virtue: ele.virtue,
+            virtue: ele.virtue,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -256,7 +258,7 @@ function getData() {
         if (newPerson.fullVideo === "שרשרת קצרה") newPerson.fullVideo = "";
         if (ele.fixedsubtitle !== "")
             newPerson.message = ele.fixedsubtitle;
-         if (ele.fixedvirtue!== "")
+        if (ele.fixedvirtue!== "")
             newPerson.virtue = ele.fixedvirtue;
         allPeople.push(newPerson);
         personOption = document.createElement("option");
@@ -287,6 +289,9 @@ function getChainData() {
           participants:ele.participants,
         };
         allChains.push(newChain);
+        chainOption = document.createElement("option");
+        chainOption.value = newChain.name;
+        document.getElementById("chainsNames").append(chainOption);
       });
     });
 }
@@ -331,7 +336,11 @@ function submitData() {
         selectedData.interviewerPhone="";
     var nameAndChain1 = document.getElementById("peopleList1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleList2").value.split(" + ");
-    
+    var chainVal=document.getElementById("chain").value;
+
+    if(nameAndChain1[1]===nameAndChain2[1]){
+        sameChain=true;
+    }
   for (var i = 0; i < allPeople.length; i++) {
     
     if (
@@ -365,13 +374,16 @@ function submitData() {
         if(allPeople[i].interphone!==""){
             selectedData.interviewerPhone=allPeople[i].interphone;
         }
-      if (allPeople[i].chain !== "") {
+        
+      if (allPeople[i].chain !== ""&&chainVal === "") {
         for (var j = 0; j < allChains.length; j++) {
           if (
             allPeople[i].chain === allChains[j].name ||
             allPeople[i].chain === allChains[j].altName
           ) {
             currChain = allChains[j];
+            document.getElementById("chain").value=currChain.name;
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
             console.log(currChain);
             allPeople[i].chain = allChains[j].name;
             if (
@@ -402,7 +414,7 @@ function submitData() {
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
     selectedData.message2=allPeople[i].message;
-        selectedData.virtue2=allPeople[i].virtue;
+          selectedData.virtue2=allPeople[i].virtue;
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -424,13 +436,16 @@ function submitData() {
         if(allPeople[i].interphone!==""){
             selectedData.interviewerPhone=allPeople[i].interphone;
         }
-      if (allPeople[i].chain !== "") {
+      if (allPeople[i].chain !== ""&&chainVal === "") {
         for (var j = 0; j < allChains.length; j++) {
           if (
             allPeople[i].chain === allChains[j].name ||
             allPeople[i].chain === allChains[j].altName
           ) {
             currChain = allChains[j];
+            document.getElementById("chain").value=currChain.name;
+
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
             console.log(currChain);
             allPeople[i].chain = allChains[j].name;
             if (
@@ -463,7 +478,7 @@ function submitData() {
      selectedData.guestName3=allPeople[i].name;
     selectedData.topicOfStory3=allPeople[i].topicOfStory;
     selectedData.message3=allPeople[i].message;
-        selectedData.virtue3=allPeople[i].virtue;
+          selectedData.virtue3=allPeople[i].virtue;
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
     selectedData.instagramLink3=allPeople[i].instagram;
@@ -489,7 +504,30 @@ function submitData() {
   }
     
     }    
-  document.getElementById("linkToPlaylist").value = currChain.playlist;
+    if (chainVal !== "") {
+        for (var j = 0; j < allChains.length; j++) {
+          if (
+            chainVal === allChains[j].name ||
+            chainVal === allChains[j].altName
+          ) {
+            currChain = allChains[j];
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
+            console.log(currChain);
+            if (
+              endsWithNumber(chainVal) &&
+              chainVal === allChains[j].name
+            ) {
+              chainVal = allChains[j].altName;
+            }
+            if (
+              endsWithNumber(allPeople[i].chain) &&
+              chainVal === allChains[j].altName
+            ) {
+              chainVal = allChains[j].name;
+            }
+          }
+        }
+      }
 
 }
 function submitDataEng() {
@@ -546,7 +584,7 @@ function submitDataEng() {
      selectedData.guestName1=allPeople[i].name;
     selectedData.topicOfStory1=allPeople[i].topicOfStory;
     selectedData.message1="";
-       selectedData.virtue1="";
+        selectedData.virtue1="";
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
     selectedData.instagramLink1=allPeople[i].instagram;
@@ -605,7 +643,7 @@ function submitDataEng() {
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
     selectedData.message2="";
-       selectedData.virtue2="";
+         selectedData.virtue2="";
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -666,7 +704,7 @@ function submitDataEng() {
      selectedData.guestName3=allPeople[i].name;
     selectedData.topicOfStory3=allPeople[i].topicOfStory;
     selectedData.message3="";
-       selectedData.virtue3="";
+         selectedData.virtue3="";
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
     selectedData.instagramLink3=allPeople[i].instagram;
@@ -701,6 +739,7 @@ function submitDataEng() {
 function reset() {
   document.getElementById("order").value = "";
   document.getElementById("linkToPlaylist").value = "";
+    document.getElementById("chain").value = "";
      document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
 }
@@ -819,13 +858,11 @@ function showText(type,lang){
                 (type==="panelEvent"&&linesInPanelEventHeb[i]==="v")
               ){
                     if(currLine!==""&&currLine!=="_שורה_ריקה_"){
-                        console.log(currLine);
                         var testH4 = document.createElement("h4");
                         testH4.innerHTML = currLine;
                         testDiv.append(testH4);
                     }
                     if(currLine==="_שורה_ריקה_"){
-                        console.log(currLine);
                       var testH4 = document.createElement("h4");
                         testH4.innerText = "<br>";
                         testH4.innerHTML = currLine;
@@ -851,13 +888,11 @@ function showText(type,lang){
                 (type==="panelEvent"&&linesInPanelEventEng[i]==="v")
               ){
                     if(currLine!==""&&currLine!=="_שורה_ריקה_"){
-                        console.log(currLine);
                         var testH4 = document.createElement("h4");
                         testH4.innerHTML = currLine;
                         testDiv.append(testH4);
                     }
                     if(currLine==="_שורה_ריקה_"){
-                        console.log(currLine);
                       var testH4 = document.createElement("h4");
                         testH4.innerText = "<br>";
                         testH4.innerHTML = currLine;
@@ -881,7 +916,17 @@ function swapData4titles(line){
         line=line.replace("topicOfStory1", selectedData.topicOfStory1);
     }
     if(line.includes("guestName1")){
-        line=line.replace("guestName1", selectedData.guestName1);
+        if(currChain.name==="סגולות"){
+            if(selectedData.virtue3!==""){
+                line=line.replace("guestName1", selectedData.virtue1+", "+selectedData.virtue2+" ו"+selectedData.virtue3+". מאת:"+selectedData.guestName1);
+            }
+            if(selectedData.virtue3===""){
+                line=line.replace("guestName1", selectedData.virtue1+" ו"+selectedData.virtue2+". מאת:"+selectedData.guestName1);
+            }
+        }
+        if(currChain.name!=="סגולות"){
+            line=line.replace("guestName1", selectedData.guestName1);
+        }
     }
     if(line.includes("firstNameOfGuest1")){
         line=line.replace("firstNameOfGuest1", fixFirstName(selectedData.guestName1));
@@ -890,7 +935,11 @@ function swapData4titles(line){
         line=line.replace("topicOfStory2", selectedData.topicOfStory2);
     }
     if(line.includes("guestName2")){
-        line=line.replace("guestName2", selectedData.guestName2);
+        if(selectedData.guestName3==="")
+            line=line.replace(", guestName2", " ו"+selectedData.guestName2);
+        else
+           line=line.replace("guestName2", selectedData.guestName2);
+
     }
     if(line.includes("firstNameOfGuest2")){
         line=line.replace("firstNameOfGuest2", fixFirstName(selectedData.guestName2));
@@ -899,7 +948,10 @@ function swapData4titles(line){
         line=line.replace("topicOfStory3", selectedData.topicOfStory3);
     }
     if(line.includes("guestName3")){
-        line=line.replace("guestName3", selectedData.guestName3);
+        if(selectedData.guestName3!=="")
+            line=line.replace("guestName3", "ו"+selectedData.guestName3);
+        else
+            line=line.replace("guestName3", selectedData.guestName3);
     }
     if(line.includes("firstNameOfGuest3")){
         line=line.replace("firstNameOfGuest3", fixFirstName(selectedData.guestName3));
@@ -930,7 +982,7 @@ function swapWithData(line){
         if(selectedData.message1==="")
             line="";
     }
-   if(line.includes("virtue1")){
+    if(line.includes("virtue1")){
         line=line.replace("virtue1", selectedData.virtue1);
         if(selectedData.virtue1==="")
             line="";
@@ -985,7 +1037,7 @@ function swapWithData(line){
         if(selectedData.message2==="")
             line="";
     }
-   if(line.includes("virtue2")){
+     if(line.includes("virtue2")){
         line=line.replace("virtue2", selectedData.virtue2);
         if(selectedData.virtue2==="")
             line="";
@@ -1040,7 +1092,7 @@ function swapWithData(line){
         if(selectedData.message3==="")
             line="";
     }
-   if(line.includes("virtue3")){
+     if(line.includes("virtue3")){
         line=line.replace("virtue3", selectedData.virtue3);
         if(selectedData.virtue3==="")
             line="";
@@ -1131,6 +1183,19 @@ function swapWithData(line){
         line=line.replace("interviewerPhone", selectedData.interviewerPhone);
         if(selectedData.interviewerPhone==="")
             line="";
+    }
+    if(line.includes("- virtues")){
+          if(currChain.name==="סגולות"){
+                if(selectedData.virtue3!==""){
+                    line=line.replace("virtues", selectedData.virtue1+", "+selectedData.virtue2+" ו"+selectedData.virtue3);
+                }
+                if(selectedData.virtue3===""){
+                    line=line.replace("virtues", selectedData.virtue1+" ו"+selectedData.virtue2);
+                }
+            }
+        if(currChain.name!=="סגולות"){
+                line=line.replace("- virtues", "");
+        }
     }
     return line;
 }
