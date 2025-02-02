@@ -287,6 +287,7 @@ function getChainData() {
           description: ele.description,
           about:ele.about,
           participants:ele.participants,
+          creator:ele.creator
         };
         allChains.push(newChain);
         chainOption = document.createElement("option");
@@ -401,6 +402,9 @@ function submitData() {
           }
         }
       }
+      if(selectedData.interviewerName===""&&currChain.creator!==""){
+          selectedData.interviewerName=currChain.creator;
+      }  
     }
   }
     for (var i = 0; i < allPeople.length; i++) {
@@ -463,6 +467,9 @@ function submitData() {
           }
         }
       }
+        if(selectedData.interviewerName===""&&currChain.creator!==""){
+          selectedData.interviewerName=currChain.creator;
+      } 
     }
   }
     if(document.getElementById("peopleList3").value!==""){
@@ -478,7 +485,7 @@ function submitData() {
      selectedData.guestName3=allPeople[i].name;
     selectedData.topicOfStory3=allPeople[i].topicOfStory;
     selectedData.message3=allPeople[i].message;
-          selectedData.virtue3=allPeople[i].virtue;
+     selectedData.virtue3=allPeople[i].virtue;
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
     selectedData.instagramLink3=allPeople[i].instagram;
@@ -500,6 +507,7 @@ function submitData() {
         if(allPeople[i].interphone!==""){
             selectedData.interviewerPhone=allPeople[i].interphone;
         }
+        
     }
   }
     
@@ -528,6 +536,7 @@ function submitData() {
           }
         }
       }
+    
 
 }
 function submitDataEng() {
@@ -630,6 +639,9 @@ function submitDataEng() {
           }
         }
       }
+    if(selectedData.interviewerName===""&&currChain.creator!==""){
+          selectedData.interviewerName=currChain.creator;
+      } 
     }
   }
     for (var i = 0; i < allPeople.length; i++) {
@@ -689,6 +701,9 @@ function submitDataEng() {
           }
         }
       }
+        if(selectedData.interviewerName===""&&currChain.creator!==""){
+          selectedData.interviewerName=currChain.creator;
+      } 
     }
   }
     if(document.getElementById("peopleListEng3").value!==""){
@@ -726,6 +741,7 @@ function submitDataEng() {
         if(allPeople[i].interviewerName!==""){
             selectedData.interviewerName=allPeople[i].interviewerName;
         }
+        
     }
   }
     
