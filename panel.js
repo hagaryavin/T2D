@@ -918,10 +918,10 @@ function swapData4titles(line){
     if(line.includes("guestName1")){
         if(currChain.name==="סגולות"){
             if(selectedData.virtue3!==""){
-                line=line.replace("guestName1", selectedData.virtue1+", "+selectedData.virtue2+" ו"+selectedData.virtue3+". מאת:"+selectedData.guestName1);
+                line=line.replace("guestName1", selectedData.virtue1+", "+selectedData.virtue2+" ו"+selectedData.virtue3+" | "+selectedData.guestName1);
             }
             if(selectedData.virtue3===""){
-                line=line.replace("guestName1", selectedData.virtue1+" ו"+selectedData.virtue2+". מאת:"+selectedData.guestName1);
+                line=line.replace("guestName1", selectedData.virtue1+" ו"+selectedData.virtue2+" | "+selectedData.guestName1);
             }
         }
         if(currChain.name!=="סגולות"){
