@@ -260,6 +260,8 @@ function getData() {
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
+            publishPhone:ele.publishphone,
+            publishEmail:ele.publishemail,
             id: ele.id,
             ide:ele.id,
           row: rowCount,
@@ -791,6 +793,16 @@ function swapWithData(line){
     if(line.includes("websiteLink")){
         line=line.replace("websiteLink", selectedPerson.sites);
         if(selectedPerson.sites===""||selectedPerson.sites===" ")
+            line="";
+    }
+    if(line.includes("publishPhone")){
+        line=line.replace("publishPhone", selectedPerson.publishPhone);
+        if(selectedPerson.publishPhone===""&&selectedPerson.publishEmail==="")
+            line="";
+    }
+     if(line.includes("publishEmail")){
+        line=line.replace("publishEmail", selectedPerson.publishEmail);
+        if(selectedPerson.publishEmail===""&&selectedPerson.publishPhone==="")
             line="";
     }
     if(line.includes("chainName")){
