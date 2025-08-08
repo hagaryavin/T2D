@@ -325,8 +325,10 @@ function getChainData() {
           description: ele.description,
           about:ele.about,
           participants:ele.participants,
+          credit:ele.credit,
         };
         allChains.push(newChain);
+          console.log(newChain);
       });
     });
 }
@@ -817,6 +819,11 @@ function swapWithData(line){
     if(line.includes("chainDescription")){
         line=line.replace("chainDescription", currChain.description);
         if(currChain.description==="")
+            line="";
+    }
+    if(line.includes("chainCredit")){
+        line=line.replace("chainCredit", currChain.credit);
+        if(currChain.credit==="")
             line="";
     }
     if(line.includes("chainAbout")){
