@@ -428,6 +428,8 @@ function reset() {
   document.getElementById("linkToPlaylist").value = "";
   document.getElementById("linkToExplain").value = "";
   document.getElementById("linkToFive").value = "";
+    document.getElementById("zoomCopy").style.visibility="hidden";
+    document.getElementById("zoomCopy").innerHTML="להעתקת לינק לזום";
      document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
 }
@@ -483,6 +485,8 @@ function fixChain(chain) {
   return chain;
 }
 function submit() {
+    document.getElementById("zoomCopy").style.visibility="hidden";
+    document.getElementById("zoomCopy").innerHTML="להעתקת לינק לזום";
     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
     var type="five";
@@ -551,6 +555,7 @@ function submit() {
     {
              type="event";
              lang="heb";
+            document.getElementById("zoomCopy").style.visibility="visible";
          }
      if (document.getElementById("tinyEng").checked) 
     {
@@ -611,6 +616,7 @@ function submit() {
     {
              type="event";
              lang="eng";
+            document.getElementById("zoomCopy").style.visibility="visible";
          }
     showText(type,lang);
     fixTitle(type,lang);
