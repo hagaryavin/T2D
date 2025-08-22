@@ -241,6 +241,7 @@ function getData() {
         newPerson = {
           name: ele.name,
           interviewerName: ele.interviewername,
+          inviterName:ele.inviter,
           chain: ele.chain,
           email: ele.email,
            guestphone: ele.phone,
@@ -856,6 +857,11 @@ function swapWithData(line){
     if(line.includes("interviewerName")){
         line=line.replace("interviewerName", selectedPerson.interviewerName);
         if(selectedPerson.interviewerName==="")
+            line="";
+    }
+    if(line.includes("inviterName")){
+        line=line.replace("inviterName", selectedPerson.inviterName);
+        if(selectedPerson.inviterName==="")
             line="";
     }
     if(line.includes("email")){
