@@ -188,6 +188,8 @@ function getDataEng(){
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
+            professionalName:ele.professionalname,
+            professionalPhone:ele.professionalphone,
             id: ele.id,
             ide:ele.ide,
           row: rowCount,
@@ -263,6 +265,8 @@ function getData() {
           sites: ele.othersites + " " + ele.moreothersites,
             publishPhone:ele.publishphone,
             publishEmail:ele.publishemail,
+            professionalName:ele.professionalname,
+            professionalPhone:ele.professionalphone,
             id: ele.id,
             ide:ele.id,
           row: rowCount,
@@ -807,6 +811,16 @@ function swapWithData(line){
     if(line.includes("publishPhone")){
         line=line.replace("publishPhone", selectedPerson.publishPhone);
         if(selectedPerson.publishPhone===""&&selectedPerson.publishEmail==="")
+            line="";
+    }
+     if(line.includes("professionalName")){
+        line=line.replace("professionalName", selectedPerson.professionalName);
+        if(selectedPerson.professionalName==="")
+            line="";
+    }
+     if(line.includes("professionalPhone")){
+        line=line.replace("professionalPhone", selectedPerson.professionalPhone);
+        if(selectedPerson.professionalPhone==="")
             line="";
     }
      if(line.includes("publishEmail")){
