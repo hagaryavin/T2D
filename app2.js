@@ -290,6 +290,10 @@ function getData() {
           newPerson.topicOfStory = ele.fixedtopicofstory;
         if (ele.fixedabouttheguest !== "")
           newPerson.abouttheguest = ele.fixedabouttheguest;
+        if (ele.fixedpublishphone !== "")
+          newPerson.publishPhone = ele.fixedpublishphone;
+          if (ele.fixedpublishemail !== "")
+          newPerson.publishEmail = ele.fixedpublishemail;
         if (ele.recordingdate !== "")
           newPerson.date = changeTimeZone(new Date(ele.recordingdate), 'Asia/Jerusalem');
        if (ele.fixedrecordingdate !== "")
