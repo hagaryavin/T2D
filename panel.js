@@ -300,6 +300,7 @@ function getChainData() {
           about:ele.about,
           participants:ele.participants,
           credit:ele.credit,
+            specialText:ele.specialtext,
           creator:ele.creator
         };
         allChains.push(newChain);
@@ -1245,6 +1246,11 @@ function swapWithData(line){
     if(line.includes("chainCredit")){
         line=line.replace("chainCredit", currChain.credit);
         if(currChain.credit==="")
+            line="";
+    }
+    if(line.includes("chainSpecialText")){
+        line=line.replace("chainSpecialText", currChain.specialText);
+        if(currChain.specialText==="")
             line="";
     }
     if(line.includes("playlistLink")){
