@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/324/324104.png"
+    />
+    <title>T2D - משולש</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+     <img src="logo5-round.png" alt="Logo" width="40" height="40" style="position: fixed; top: 10px; left: 10px;">
+
+        <label style="position: fixed; top: 15px; left: 60px; font-size: 24px; font-weight: bold;line-height: 1;">
+          T2D
+        </label>
+
+          <img src="logoFLAT.png" alt="Wide Logo" height="50">
+      <br>
+
+   בחרי את האורח+שרשרת
+            <input
+            type="text"
+            id="peopleList1"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+           <input
+            type="text"
+            id="peopleList2"
+            list="people"
+            autocomplete="off"
+          />
+          <datalist id="people"> </datalist>
+          <button onclick="submitData()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+       <br />
+    בחרי את האורח+שרשרת באנגלית
+            <input
+            type="text"
+            id="peopleListEng1"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+           <input
+            type="text"
+            id="peopleListEng2"
+            list="peopleEng"
+            autocomplete="off"
+          />
+          <datalist id="peopleEng"> </datalist>
+          <button onclick="submitDataEng()" id="submitData">
+            תלחצי פה לבחירה
+          </button>
+      <br/>
+      
+  מה שם השרשרת?<input type="text" list="chainsNames" id="chain" autocomplete="off"/>
+  <datalist id="chainsNames">
+  </datalist>
+       <br />
+    מה מספר המשולש?<input
+      type="number"
+      id="order"
+      name="order"
+      min="1"
+      autocomplete="off"
+    /><br />
+    להעתיק לפה ⇩ את הקישור לפלייליסט
+    <br /><input
+      type="text"
+      autocomplete="off"
+      id="linkToPlaylist"
+      name="linkToPlaylist"
+      spellcheck="false"
+    /><br />
+      <table>
+          <tr>
+              <td>
+                  <u>
+                  עברית
+              </u>
+                      </td>
+              <td>
+                  <u>
+                  אנגלית
+                  </u>
+                      </td>
+          </tr>
+      <tr> 
+          <td>
+    <input type="radio" id="triangleHeb" name="type" value="triangle" checked="checked"/>
+    <label for="triangleHeb">משולש LIVE</label>
+              </td>
+          <td>
+    <input type="radio" id="triangleEng" name="type" value="triangle" />
+    <label for="triangleEng">משולש LIVE</label>
+              </td>
+    </tr>
+      <tr>
+          <td>
+    <input type="radio" id="trianglePostHeb" name="type" value="trianglePost" />
+    <label for="trianglePostHeb">פוסט LIVE פייסבוק</label>
+              </td>
+          <td>
+    <input type="radio" id="trianglePostEng" name="type" value="trianglePost" />
+    <label for="trianglePostEng">פוסט LIVE פייסבוק</label>
+              </td>
+    </tr>  
+        <tr>
+          <td>
+    <input type="radio" id="triangleEventHeb" name="type" value="triangleEvent" />
+    <label for="triangleEventHeb">אירוע ביומן</label>
+              </td>
+          <td>
+    <input type="radio" id="triangleEventEng" name="type" value="triangleEvent" />
+    <label for="triangleEventEng">אירוע ביומן</label>
+              </td>
+    </tr> 
+      </table>
+    <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
+    <button onclick="reset()">לאפס נתונים</button>
+    <br />
+    <br />
+    <button onclick="copycat('title')" id="titleCopy">להעתקת הכותרת</button>
+    <button onclick="copycat('text')" id="textCopy">להעתקת התיאור</button>
+    <button onclick="copycat('zoom')" id="zoomCopy" style="visibility: hidden;">להעתקת לינק לזום</button>
+
+    <br />
+    
+    <h2 id="title">כך נראית התבנית לפני מילוי הפרטים:</h2>
+    <br />
+    <div id="text"></div>
+    <div id="zoom" style="display: none;">https://tinyurl.com/story555zoom</div>
+    <br />
+    <script src="triangle.js"></script> 
+  </body>
+  </html>
+  
