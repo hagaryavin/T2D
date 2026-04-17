@@ -2,12 +2,13 @@ var options = document.getElementById("people");
 var optionsEng = document.getElementById("peopleEng");
 var theImportantT2DURL="https://script.google.com/macros/s/AKfycbzcWW--rxYPZWO-fogfe6Frn1YXVejatzNlBU53UMNOToe50OFC-cv_ndXojlLOePU4/exec";
 var url =
-  "https://script.google.com/macros/s/AKfycbxDcej67zrhC5zOxbGN76qFBZc3AWbP4UUhexUqPRnzN79Lb5ZmTl5PMgYNFihoXXl3Kg/exec";
+  "https://script.google.com/macros/s/AKfycby11yYTedy449avnyBnGMY1fuWoksByKmmRvcYM0ZsFzSpomwX6VlxPF9yGOsgQiLAxlw/exec";
 var urlEng="https://script.google.com/macros/s/AKfycbwif1D1ZdoI1iYaL2Hya5Jke8UIFaoPxMo2Jkvd3cNytK35UIGbJZ0NKwhiYJQgana8-A/exec";
 var newPerson = {};
 var selectedData = {
         guestName1:"",
         topicOfStory1:"",
+        commontitle1:"",
         aboutTheGuest1:"",
         facebookLink1:"",
         instagramLink1:"",
@@ -19,6 +20,7 @@ var selectedData = {
         order1:"",
         guestName2:"",
         topicOfStory2:"",
+        commontitle2:"",
         aboutTheGuest2:"",
         facebookLink2:"",
         instagramLink2:"",
@@ -128,6 +130,7 @@ function getDataEng(){
            guestphone: ele.phone,
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
+          commontitle:ele.commontitle,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -156,6 +159,8 @@ function getDataEng(){
           newPerson.interphone = ele.fixedinterviewerphone;
         if (ele.fixedtopicofstory !== "")
           newPerson.topicOfStory = ele.fixedtopicofstory;
+        if (ele.fixedcommontitle !== "")
+          newPerson.commontitle = ele.fixedcommontitle;
         if (newPerson.abouttheguest === "") {
           if (ele.abouttheguesttwo !== "") newPerson.abouttheguest = ele.abouttheguesttwo;
         }
@@ -198,6 +203,7 @@ function getData() {
            guestphone: ele.phone,
           interphone: ele.interviewerphone,
           topicOfStory: ele.topicofstory,
+          commontitle:ele.commontitle,
           order: ele.order,
           fullVideo: ele.linkfull,
           fiveVideo: ele.linkfive,
@@ -233,6 +239,8 @@ function getData() {
           newPerson.interphone = ele.fixedinterviewerphone;
         if (ele.fixedtopicofstory !== "")
           newPerson.topicOfStory = ele.fixedtopicofstory;
+        if (ele.fixedcommontitle !== "")
+          newPerson.commontitle = ele.fixedcommontitle;
         if (ele.fixedabouttheguest !== "")
           newPerson.abouttheguest = ele.fixedabouttheguest;
         if (ele.fixedpublishphone !== "")
@@ -289,6 +297,7 @@ function getChainData() {
 function submitData() {
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
+          selectedData.commontitle1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
         selectedData.instagramLink1="";
@@ -300,7 +309,9 @@ function submitData() {
         selectedData.order1="";
         selectedData.guestName2="";
         selectedData.topicOfStory2="";
+        selectedData.commontitle2="";
         selectedData.aboutTheGuest2="";
+        selectedData.commontitle2="";
         selectedData.facebookLink2="";
         selectedData.instagramLink2="";
         selectedData.websiteLink2="";
@@ -327,6 +338,7 @@ function submitData() {
         
      selectedData.guestName1=allPeople[i].name;
     selectedData.topicOfStory1=allPeople[i].topicOfStory;
+    selectedData.commontitle1=allPeople[i].commontitle;
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
     selectedData.instagramLink1=allPeople[i].instagram;
@@ -391,6 +403,7 @@ function submitData() {
       console.log("row num#2:" + allPeople[i].row+" - "+nameAndChain2[0]);
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
+    selectedData.commontitle2=allPeople[i].commontitle;
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -473,6 +486,7 @@ function submitData() {
 function submitDataEng() {
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
+        selectedData.commontitle1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
         selectedData.instagramLink1="";
@@ -484,6 +498,7 @@ function submitDataEng() {
         selectedData.order1="";
         selectedData.guestName2="";
         selectedData.topicOfStory2="";
+        selectedData.commontitle2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
         selectedData.instagramLink2="";
@@ -512,6 +527,7 @@ function submitDataEng() {
         
      selectedData.guestName1=allPeople[i].name;
     selectedData.topicOfStory1=allPeople[i].topicOfStory;
+     selectedData.commontitle1=allPeople[i].commontitle;   
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
     selectedData.instagramLink1=allPeople[i].instagram;
@@ -572,6 +588,7 @@ function submitDataEng() {
         
      selectedData.guestName2=allPeople[i].name;
     selectedData.topicOfStory2=allPeople[i].topicOfStory;
+    selectedData.commontitle2=allPeople[i].commontitle;   
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.instagramLink2=allPeople[i].instagram;
@@ -812,8 +829,24 @@ function removeAllChildNodes(parent) {
   }
 }
 function swapData4titles(line){
+    console.log("selectedData V");
+    console.log(selectedData);
     if(line.includes("topicOfStory1")){
         line=line.replace("topicOfStory1", selectedData.topicOfStory1);
+    }
+    if(line.includes("commonTitle")){
+        if(selectedData.commontitle1!==""&&selectedData.commontitle2!==""){
+            line=line.replace("commonTitle", selectedData.commontitle1);
+        }
+        if(selectedData.commontitle1!==""&&selectedData.commontitle2===""){
+            line=line.replace("commonTitle", selectedData.commontitle1);
+        }
+        if(selectedData.commontitle1===""&&selectedData.commontitle2!==""){
+            line=line.replace("commonTitle", selectedData.commontitle2);
+        }
+        if(selectedData.commontitle1===""&&selectedData.commontitle2===""){
+            line=line.replace("commonTitle", "");
+        }
     }
     if(line.includes("guestName1")){
         line=line.replace("guestName1", selectedData.guestName1);
@@ -849,6 +882,11 @@ function swapWithData(line){
      if(line.includes("topicOfStory1")){
         line=line.replace("topicOfStory1", selectedData.topicOfStory1);
         if(selectedData.topicOfStory1==="")
+            line="";
+    }
+    if(line.includes("commonTitle1")){
+        line=line.replace("commonTitle1", selectedData.commontitle1);
+        if(selectedData.commontitle1==="")
             line="";
     }
      if(line.includes("aboutTheGuest1")){
@@ -904,6 +942,11 @@ function swapWithData(line){
      if(line.includes("topicOfStory2")){
         line=line.replace("topicOfStory2", selectedData.topicOfStory2);
         if(selectedData.topicOfStory2==="")
+            line="";
+    }
+    if(line.includes("commonTitle2")){
+        line=line.replace("commonTitle2", selectedData.commontitle2);
+        if(selectedData.commontitle2==="")
             line="";
     }
      if(line.includes("aboutTheGuest2")){
