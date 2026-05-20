@@ -13,6 +13,7 @@ var selectedData = {
         message1:"",
         aboutTheGuest1:"",
         facebookLink1:"",
+        linkedinLink1:"",
         instagramLink1:"",
         websiteLink1:"",
         publishPhone1:"",
@@ -26,6 +27,7 @@ var selectedData = {
         virtue2:"",
         aboutTheGuest2:"",
         facebookLink2:"",
+    linkedinLink2:"",
         instagramLink2:"",
         websiteLink2:"",
         publishPhone2:"",
@@ -39,6 +41,7 @@ var selectedData = {
         virtue3:"",
         aboutTheGuest3:"",
         facebookLink3:"",
+    linkedinLink3:"",
         instagramLink3:"",
         websiteLink3:"",
         publishPhone3:"",
@@ -155,6 +158,7 @@ function getDataEng(){
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguestone,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -227,6 +231,7 @@ function getData() {
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguest,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -318,6 +323,7 @@ function submitData() {
         selectedData.message1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
+    selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
         selectedData.websiteLink1="";
         selectedData.publishPhone1="";
@@ -331,6 +337,7 @@ function submitData() {
         selectedData.message2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
+        selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
         selectedData.websiteLink2="";
         selectedData.publishPhone2="";
@@ -344,6 +351,7 @@ function submitData() {
         selectedData.message3="";
         selectedData.aboutTheGuest3="";
         selectedData.facebookLink3="";
+        selectedData.linkedinLink3="";
         selectedData.instagramLink3="";
         selectedData.websiteLink3="";
         selectedData.publishPhone3="";
@@ -377,6 +385,7 @@ function submitData() {
     selectedData.virtue1=allPeople[i].virtue;
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
+        selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
     selectedData.websiteLink1=allPeople[i].sites;
     selectedData.publishPhone1=allPeople[i].publishPhone;
@@ -444,6 +453,7 @@ function submitData() {
           selectedData.virtue2=allPeople[i].virtue;
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
+    selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
     selectedData.websiteLink2=allPeople[i].sites;
     selectedData.publishPhone2=allPeople[i].publishPhone;
@@ -513,6 +523,7 @@ function submitData() {
      selectedData.virtue3=allPeople[i].virtue;
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
+    selectedData.linkedinLink3=allPeople[i].linkedin;
     selectedData.instagramLink3=allPeople[i].instagram;
     selectedData.websiteLink3=allPeople[i].sites;
     selectedData.publishPhone3=allPeople[i].publishPhone;
@@ -573,6 +584,7 @@ function submitDataEng() {
         selectedData.message1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
+    selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
         selectedData.websiteLink1="";
         selectedData.publishPhone1="";
@@ -586,6 +598,7 @@ function submitDataEng() {
         selectedData.message2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
+        selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
         selectedData.websiteLink2="";
         selectedData.publishPhone2="";
@@ -599,6 +612,7 @@ function submitDataEng() {
     selectedData.virtue3="";
         selectedData.aboutTheGuest3="";
         selectedData.facebookLink3="";
+        selectedData.linkedinLink3="";
         selectedData.instagramLink3="";
         selectedData.websiteLink3="";
         selectedData.publishPhone3="";
@@ -629,6 +643,7 @@ function submitDataEng() {
         selectedData.virtue1="";
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
+        selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
     selectedData.websiteLink1=allPeople[i].sites;
         selectedData.email1=allPeople[i].email;
@@ -691,6 +706,7 @@ function submitDataEng() {
          selectedData.virtue2="";
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
+                selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
     selectedData.websiteLink2=allPeople[i].sites;
         selectedData.email2=allPeople[i].email;
@@ -755,6 +771,7 @@ function submitDataEng() {
          selectedData.virtue3="";
     selectedData.aboutTheGuest3=allPeople[i].abouttheguest;
     selectedData.facebookLink3=allPeople[i].facebook;
+    selectedData.linkedinLink3=allPeople[i].linkedin;
     selectedData.instagramLink3=allPeople[i].instagram;
     selectedData.websiteLink3=allPeople[i].sites;
         selectedData.email3=allPeople[i].email;
@@ -1059,6 +1076,11 @@ function swapWithData(line){
         if( selectedData.facebookLink1==="")
             line="";
     }
+    if(line.includes("linkedinLink1")){
+        line=line.replace("linkedinLink1", selectedData.linkedinLink1);
+        if( selectedData.linkedinLink1==="")
+            line="";
+    }
     if(line.includes("instagramLink1")){
         line=line.replace("instagramLink1", selectedData.instagramLink1);
         if( selectedData.instagramLink1==="")
@@ -1124,6 +1146,11 @@ function swapWithData(line){
         if( selectedData.facebookLink2==="")
             line="";
     }
+    if(line.includes("linkedinLink2")){
+        line=line.replace("linkedinLink2", selectedData.linkedinLink2);
+        if( selectedData.linkedinLink2==="")
+            line="";
+    }
     if(line.includes("instagramLink2")){
         line=line.replace("instagramLink2", selectedData.instagramLink2);
         if( selectedData.instagramLink2==="")
@@ -1187,6 +1214,11 @@ function swapWithData(line){
     if(line.includes("facebookLink3")){
         line=line.replace("facebookLink3", selectedData.facebookLink3);
         if( selectedData.facebookLink3==="")
+            line="";
+    }
+    if(line.includes("linkedinLink3")){
+        line=line.replace("linkedinLink3", selectedData.linkedinLink3);
+        if( selectedData.linkedinLink3==="")
             line="";
     }
     if(line.includes("instagramLink3")){

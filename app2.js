@@ -184,6 +184,7 @@ function getDataEng(){
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguestone,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -259,6 +260,7 @@ function getData() {
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguest,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -801,6 +803,11 @@ function swapWithData(line){
     if(line.includes("facebookLink")){
         line=line.replace("facebookLink", selectedPerson.facebook);
         if( selectedPerson.facebook==="")
+            line="";
+    }
+    if(line.includes("linkedinLink")){
+        line=line.replace("linkedinLink", selectedPerson.linkedin);
+        if( selectedPerson.linkedin==="")
             line="";
     }
     if(line.includes("instagramLink")){

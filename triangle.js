@@ -11,6 +11,7 @@ var selectedData = {
         commontitle1:"",
         aboutTheGuest1:"",
         facebookLink1:"",
+        linkedinLink1:"",
         instagramLink1:"",
         websiteLink1:"",
         publishPhone1:"",
@@ -23,6 +24,7 @@ var selectedData = {
         commontitle2:"",
         aboutTheGuest2:"",
         facebookLink2:"",
+        linkedinLink2:"",
         instagramLink2:"",
         websiteLink2:"",
         publishPhone2:"",
@@ -140,6 +142,7 @@ function getDataEng(){
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguestone,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -213,6 +216,7 @@ function getData() {
           prepTalk: ele.preptalk,
           abouttheguest: ele.abouttheguest,
           facebook: ele.facebook,
+            linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
@@ -301,6 +305,7 @@ function submitData() {
           selectedData.commontitle1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
+        selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
         selectedData.websiteLink1="";
         selectedData.publishPhone1="";
@@ -314,6 +319,7 @@ function submitData() {
         selectedData.aboutTheGuest2="";
         selectedData.commontitle2="";
         selectedData.facebookLink2="";
+        selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
         selectedData.websiteLink2="";
         selectedData.publishPhone2="";
@@ -342,6 +348,7 @@ function submitData() {
     selectedData.commontitle1=allPeople[i].commontitle;
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
+        selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
     selectedData.websiteLink1=allPeople[i].sites;
     selectedData.publishPhone1=allPeople[i].publishPhone;
@@ -407,6 +414,7 @@ function submitData() {
     selectedData.commontitle2=allPeople[i].commontitle;
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
+         selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
     selectedData.websiteLink2=allPeople[i].sites;
     selectedData.publishPhone2=allPeople[i].publishPhone;
@@ -490,6 +498,7 @@ function submitDataEng() {
         selectedData.commontitle1="";
         selectedData.aboutTheGuest1="";
         selectedData.facebookLink1="";
+        selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
         selectedData.websiteLink1="";
         selectedData.publishPhone1="";
@@ -502,6 +511,7 @@ function submitDataEng() {
         selectedData.commontitle2="";
         selectedData.aboutTheGuest2="";
         selectedData.facebookLink2="";
+    selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
         selectedData.websiteLink2="";
         selectedData.publishPhone2="";
@@ -531,6 +541,7 @@ function submitDataEng() {
      selectedData.commontitle1=allPeople[i].commontitle;   
     selectedData.aboutTheGuest1=allPeople[i].abouttheguest;
     selectedData.facebookLink1=allPeople[i].facebook;
+        selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
     selectedData.websiteLink1=allPeople[i].sites;
         selectedData.email1=allPeople[i].email;
@@ -592,6 +603,7 @@ function submitDataEng() {
     selectedData.commontitle2=allPeople[i].commontitle;   
     selectedData.aboutTheGuest2=allPeople[i].abouttheguest;
     selectedData.facebookLink2=allPeople[i].facebook;
+    selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
     selectedData.websiteLink2=allPeople[i].sites;
         selectedData.email2=allPeople[i].email;
@@ -905,6 +917,11 @@ function swapWithData(line){
         if( selectedData.facebookLink1==="")
             line="";
     }
+    if(line.includes("linkedinLink1")){
+        line=line.replace("linkedinLink1", selectedData.linkedinLink1);
+        if( selectedData.linkedinLink1==="")
+            line="";
+    }
     if(line.includes("instagramLink1")){
         line=line.replace("instagramLink1", selectedData.instagramLink1);
         if( selectedData.instagramLink1==="")
@@ -963,6 +980,11 @@ function swapWithData(line){
     if(line.includes("facebookLink2")){
         line=line.replace("facebookLink2", selectedData.facebookLink2);
         if( selectedData.facebookLink2==="")
+            line="";
+    }
+    if(line.includes("linkedinLink2")){
+        line=line.replace("linkedinLink2", selectedData.linkedinLink2);
+        if( selectedData.linkedinLink2==="")
             line="";
     }
     if(line.includes("instagramLink2")){
