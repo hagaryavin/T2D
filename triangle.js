@@ -695,6 +695,20 @@ function fixHour(str) {
  }
  return hour+":"+minute;
 }
+function fixTitleTags(str){
+    var splitTitle=str.split(" ");
+    var newTitle="";
+    var limit=4;
+    if(splitTitle.length<limit){
+        limit=splitTitle.length;
+    }
+    var i=0;
+    while(i<limit){
+        newTitle+=("#"+splitTitle[i].replace(/[^A-Za-z\u0590-\u05FF]/g, "")+" ");
+        i++;
+    }
+    return newTitle;
+}
 function fixTags(str){
 
     while (str.includes(".")) {
@@ -891,15 +905,23 @@ function swapData4titles(line){
     return line;
 }
 function swapWithData(line){
-    
+    if(line.includes("commonTitle")){
+        if(selectedData.commontitle1!==""&&selectedData.commontitle2!==""){
+            line=line.replace("commonTitle", fixTitleTags(selectedData.commontitle1));
+        }
+        if(selectedData.commontitle1!==""&&selectedData.commontitle2===""){
+            line=line.replace("commonTitle", fixTitleTags(selectedData.commontitle1));
+        }
+        if(selectedData.commontitle1===""&&selectedData.commontitle2!==""){
+            line=line.replace("commonTitle", fixTitleTags(selectedData.commontitle2));
+        }
+        if(selectedData.commontitle1===""&&selectedData.commontitle2===""){
+            line=line.replace("commonTitle", "");
+        }
+    }
      if(line.includes("topicOfStory1")){
         line=line.replace("topicOfStory1", selectedData.topicOfStory1);
         if(selectedData.topicOfStory1==="")
-            line="";
-    }
-    if(line.includes("commonTitle1")){
-        line=line.replace("commonTitle1", selectedData.commontitle1);
-        if(selectedData.commontitle1==="")
             line="";
     }
      if(line.includes("aboutTheGuest1")){
@@ -960,11 +982,6 @@ function swapWithData(line){
      if(line.includes("topicOfStory2")){
         line=line.replace("topicOfStory2", selectedData.topicOfStory2);
         if(selectedData.topicOfStory2==="")
-            line="";
-    }
-    if(line.includes("commonTitle2")){
-        line=line.replace("commonTitle2", selectedData.commontitle2);
-        if(selectedData.commontitle2==="")
             line="";
     }
      if(line.includes("aboutTheGuest2")){

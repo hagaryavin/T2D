@@ -482,6 +482,20 @@ function fixTags(str){
     }
     return str;
 }
+function fixTitleTags(str){
+    var splitTitle=str.split(" ");
+    var newTitle="";
+    var limit=4;
+    if(splitTitle.length<limit){
+        limit=splitTitle.length;
+    }
+    var i=0;
+    while(i<limit){
+        newTitle+=("#"+splitTitle[i].replace(/[^A-Za-z\u0590-\u05FF]/g, "")+" ");
+        i++;
+    }
+    return newTitle;
+}
 function fixChain(chain) {
   var splittedChain; //
   if (chain.includes(" (") || chain.includes("-")) {
@@ -776,7 +790,12 @@ function swapWithData(line){
         }       
     }
      if(line.includes("topicOfStory")){
-        line=line.replace("topicOfStory", selectedPerson.topicOfStory);
+        if(!line.includes("תגיות")&&!line.includes("Tags")){
+            line=line.replace("topicOfStory", selectedPerson.topicOfStory);
+        }
+        if(line.includes("תגיות")||line.includes("Tags")){
+            line=line.replace("topicOfStory", fixTitleTags(selectedPerson.topicOfStory));
+        }
         if(selectedPerson.topicOfStory==="")
             line="";
     }

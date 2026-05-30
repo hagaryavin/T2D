@@ -862,6 +862,7 @@ function fixChain(chain) {
   }
   return chain;
 }
+
 function submit() {
     document.getElementById("zoomCopy").style.visibility="hidden";
     document.getElementById("zoomCopy").innerHTML="להעתקת לינק לזום";
