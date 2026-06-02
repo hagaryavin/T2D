@@ -186,6 +186,11 @@ function getDataEng(){
           facebook: ele.facebook,
             linkedin: ele.linkedin,
           instagram: ele.instagram,
+            currentlocation:ele.currentlocation,
+            placeoforigin:ele.placeoforigin,
+            started:ele.started,
+            nextstop:ele.nextstop,
+            recommendation:ele.recommendation,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
             professionalName:ele.professionalname,
@@ -397,6 +402,7 @@ function submitDataEng() {
     ) {
       console.log("row num:" + allPeople[i].row);
       selectedPerson = allPeople[i];
+        console.log(allPeople[i]);
       if (selectedPerson.chain !== "") {
         for (var j = 0; j < allChains.length; j++) {
           if (
@@ -837,6 +843,31 @@ function swapWithData(line){
     if(line.includes("websiteLink")){
         line=line.replace("websiteLink", selectedPerson.sites);
         if(selectedPerson.sites===""||selectedPerson.sites===" ")
+            line="";
+    }
+    if(line.includes("currentLocation")){
+        line=line.replace("currentLocation", selectedPerson.currentlocation);
+        if(selectedPerson.currentlocation===""||selectedPerson.currentlocation===" ")
+            line="";
+    }
+    if(line.includes("placeOfOrigin")){
+        line=line.replace("placeOfOrigin", selectedPerson.placeoforigin);
+        if(selectedPerson.placeoforigin===""||selectedPerson.placeoforigin===" ")
+            line="";
+    }
+    if(line.includes("whereYouStarted")){
+        line=line.replace("whereYouStarted", selectedPerson.started);
+        if(selectedPerson.started===""||selectedPerson.started===" ")
+            line="";
+    }
+    if(line.includes("recommendationPlaces")){
+        line=line.replace("recommendationPlaces", selectedPerson.recommendation);
+        if(selectedPerson.recommendation===""||selectedPerson.recommendation===" ")
+            line="";
+    }
+    if(line.includes("nextStop")){
+        line=line.replace("nextStop", selectedPerson.nextstop);
+        if(selectedPerson.nextstop===""||selectedPerson.nextstop===" ")
             line="";
     }
     if(line.includes("publishPhone")){
