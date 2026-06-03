@@ -191,6 +191,8 @@ function getDataEng(){
             started:ele.started,
             nextstop:ele.nextstop,
             recommendation:ele.recommendation,
+            publishPhone:ele.publishphone,
+            publishEmail:ele.publishemail,
           tiktok: ele.tiktok,
           sites: ele.othersites + " " + ele.moreothersites,
             professionalName:ele.professionalname,
