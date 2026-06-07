@@ -194,7 +194,8 @@ function getDataEng(){
             publishPhone:ele.publishphone,
             publishEmail:ele.publishemail,
           tiktok: ele.tiktok,
-          sites: ele.othersites + " " + ele.moreothersites,
+          sites: ele.othersites,
+            moreSites:ele.moreothersites,
             professionalName:ele.professionalname,
             professionalPhone:ele.professionalphone,
             id: ele.id,
@@ -270,7 +271,8 @@ function getData() {
             linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
-          sites: ele.othersites + " " + ele.moreothersites,
+          sites: ele.othersites,
+            moreSites:ele.moreothersites,
             publishPhone:ele.publishphone,
             publishEmail:ele.publishemail,
             professionalName:ele.professionalname,
@@ -845,6 +847,11 @@ function swapWithData(line){
     if(line.includes("websiteLink")){
         line=line.replace("websiteLink", selectedPerson.sites);
         if(selectedPerson.sites===""||selectedPerson.sites===" ")
+            line="";
+    }
+    if(line.includes("moreWebsite")){
+        line=line.replace("moreWebsite", selectedPerson.moreSites);
+        if(selectedPerson.moreSites===""||selectedPerson.moreSites===" ")
             line="";
     }
     if(line.includes("currentLocation")){

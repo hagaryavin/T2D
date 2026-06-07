@@ -13,7 +13,8 @@ var selectedData = {
         facebookLink1:"",
         linkedinLink1:"",
         instagramLink1:"",
-        websiteLink1:"",
+        sites1:"",
+        moreSites1:"",
         publishPhone1:"",
         publishEmail1:"",
         email1:"",
@@ -26,7 +27,8 @@ var selectedData = {
         facebookLink2:"",
         linkedinLink2:"",
         instagramLink2:"",
-        websiteLink2:"",
+        sites2:"",
+        moreSites2:"",
         publishPhone2:"",
         publishEmail2:"",
         email2:"",
@@ -145,7 +147,8 @@ function getDataEng(){
             linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
-          sites: ele.othersites + " " + ele.moreothersites,
+            sites:ele.othersites,
+        moreSites: ele.moreothersites,
             id: ele.id,
             ide:ele.ide,
           row: rowCount,
@@ -219,7 +222,8 @@ function getData() {
             linkedin: ele.linkedin,
           instagram: ele.instagram,
           tiktok: ele.tiktok,
-          sites: ele.othersites + " " + ele.moreothersites,
+          sites:ele.othersites,
+        moreSites: ele.moreothersites,
             publishPhone:ele.publishphone,
             publishEmail:ele.publishemail,
             id: ele.id,
@@ -307,7 +311,8 @@ function submitData() {
         selectedData.facebookLink1="";
         selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
-        selectedData.websiteLink1="";
+        selectedData.sites1="";
+        selectedData.moreSites1="";
         selectedData.publishPhone1="";
         selectedData.publishEmail1="";
         selectedData.email1="";
@@ -321,7 +326,8 @@ function submitData() {
         selectedData.facebookLink2="";
         selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
-        selectedData.websiteLink2="";
+        selectedData.sites2="";
+        selectedData.moreSites2="";
         selectedData.publishPhone2="";
         selectedData.publishEmail2="";
         selectedData.email2="";
@@ -350,7 +356,8 @@ function submitData() {
     selectedData.facebookLink1=allPeople[i].facebook;
         selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
-    selectedData.websiteLink1=allPeople[i].sites;
+    selectedData.sites1=allPeople[i].sites;
+        selectedData.moreSites1=allPeople[i].moreSites;
     selectedData.publishPhone1=allPeople[i].publishPhone;
     selectedData.publishEmail1=allPeople[i].publishEmail;
     selectedData.email1=allPeople[i].email;
@@ -416,7 +423,8 @@ function submitData() {
     selectedData.facebookLink2=allPeople[i].facebook;
          selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
-    selectedData.websiteLink2=allPeople[i].sites;
+    selectedData.sites2=allPeople[i].sites;
+        selectedData.moreSites2=allPeople[i].moreSites;
     selectedData.publishPhone2=allPeople[i].publishPhone;
     selectedData.publishEmail2=allPeople[i].publishEmail;
     selectedData.email2=allPeople[i].email;
@@ -500,7 +508,8 @@ function submitDataEng() {
         selectedData.facebookLink1="";
         selectedData.linkedinLink1="";
         selectedData.instagramLink1="";
-        selectedData.websiteLink1="";
+         selectedData.sites1="";
+        selectedData.moreSites1="";
         selectedData.publishPhone1="";
         selectedData.publishEmail1="";
         selectedData.email1="";
@@ -513,7 +522,8 @@ function submitDataEng() {
         selectedData.facebookLink2="";
     selectedData.linkedinLink2="";
         selectedData.instagramLink2="";
-        selectedData.websiteLink2="";
+        selectedData.sites2="";
+        selectedData.moreSites2="";
         selectedData.publishPhone2="";
         selectedData.publishEmail2="";
         selectedData.email2="";
@@ -543,8 +553,8 @@ function submitDataEng() {
     selectedData.facebookLink1=allPeople[i].facebook;
         selectedData.linkedinLink1=allPeople[i].linkedin;
     selectedData.instagramLink1=allPeople[i].instagram;
-    selectedData.websiteLink1=allPeople[i].sites;
-        selectedData.email1=allPeople[i].email;
+selectedData.sites1=allPeople[i].sites;
+        selectedData.moreSites1=allPeople[i].moreSites;        selectedData.email1=allPeople[i].email;
     selectedData.guestPhone1=allPeople[i].guestphone;
         selectedData.order1=allPeople[i].order;
         if(allPeople[i].date!==""){
@@ -605,8 +615,8 @@ function submitDataEng() {
     selectedData.facebookLink2=allPeople[i].facebook;
     selectedData.linkedinLink2=allPeople[i].linkedin;
     selectedData.instagramLink2=allPeople[i].instagram;
-    selectedData.websiteLink2=allPeople[i].sites;
-        selectedData.email2=allPeople[i].email;
+    selectedData.sites2=allPeople[i].sites;
+        selectedData.moreSites2=allPeople[i].moreSites;        selectedData.email2=allPeople[i].email;
     selectedData.guestPhone2=allPeople[i].guestphone;
         selectedData.order2=allPeople[i].order;
         if(allPeople[i].date!==""){
@@ -950,8 +960,13 @@ function swapWithData(line){
             line="";
     }
     if(line.includes("websiteLink1")){
-        line=line.replace("websiteLink1", selectedData.websiteLink1);
-        if(selectedData.websiteLink1===""||selectedData.websiteLink1===" ")
+        line=line.replace("websiteLink1", selectedData.sites1);
+        if(selectedData.sites1==="")
+            line="";
+    }
+    if(line.includes("moreWebsite1")){
+        line=line.replace("moreWebsite1", selectedData.moreSites1);
+        if(selectedData.moreSites1==="")
             line="";
     }
     if(line.includes("publishPhone1")){
@@ -1010,8 +1025,13 @@ function swapWithData(line){
             line="";
     }
     if(line.includes("websiteLink2")){
-        line=line.replace("websiteLink2", selectedData.websiteLink2);
-        if(selectedData.websiteLink2===""||selectedData.websiteLink2===" ")
+        line=line.replace("websiteLink2", selectedData.sites2);
+        if(selectedData.sites2==="")
+            line="";
+    }
+    if(line.includes("moreWebsite2")){
+        line=line.replace("moreWebsite2", selectedData.moreSites2);
+        if(selectedData.moreSites2==="")
             line="";
     }
     if(line.includes("publishPhone2")){
