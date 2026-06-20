@@ -74,7 +74,7 @@ var linesInPanelEventHeb=[];
 var linesInPanelEng=[];
 var linesInPanelPostEng=[];
 var linesInPanelEventEng=[];
-var currLang="";
+var currLang="heb";
 var titles={
      panelHeb:"",
      panelPostHeb:"",
@@ -322,6 +322,7 @@ function getChainData() {
     });
 }
 function submitData() {
+    currLang="heb";
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
     selectedData.virtue1="";
@@ -583,6 +584,7 @@ function submitData() {
 
 }
 function submitDataEng() {
+    currLang="eng";
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
         selectedData.virtue1="";
@@ -811,6 +813,9 @@ selectedData.sites3=allPeople[i].sites;
     }
 }
 function reset() {
+     var testDiv = document.getElementById("text");
+    removeAllChildNodes(testDiv);
+    document.getElementById("title").innerHTML=""; 
   document.getElementById("order").value = "";
   document.getElementById("linkToPlaylist").value = "";
     document.getElementById("chain").value = "";
@@ -879,50 +884,28 @@ function submit() {
     var type="panel";
     var lang="heb";
 
-    if(document.getElementById("panelHeb").checked)
+    if(document.getElementById("panel").checked)
     {
              type="panel";
-             lang="heb";
          }
 
-    if(document.getElementById("panelPostHeb").checked)
+    if(document.getElementById("panelPost").checked)
     {
              type="panelPost";
-             lang="heb";
          }
 
 
-      if(document.getElementById("panelEventHeb").checked)
+      if(document.getElementById("panelEvent").checked)
     {
              type="panelEvent";
-             lang="heb";
             document.getElementById("zoomCopy").style.visibility="visible";
 
          }
-
-    if(document.getElementById("panelEng").checked)
-    {
-             type="panel";
-             lang="eng";
-         }
-
-    if(document.getElementById("panelPostEng").checked)
-    {
-             type="panelPost";
-             lang="eng";
-         }
-    if(document.getElementById("panelEventEng").checked)
-    {
-             type="panelEvent";
-             lang="eng";
-            document.getElementById("zoomCopy").style.visibility="visible";
-
-         }
-    showText(type,lang);
-    fixTitle(type,lang);
+    showText(type);
+    fixTitle(type);
 }
 function showText(type,lang){
-    currLang=lang;
+    lang=currLang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
     console.log("in "+type+":");
@@ -1352,7 +1335,8 @@ function swapWithData(line){
     }
     return line;
 }
-function fixTitle(type,lang) {
+function fixTitle(type) {
+    lang=currLang;
     var finalTitle="";
     var finalType="";
     if(lang==="heb"){

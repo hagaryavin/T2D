@@ -44,7 +44,7 @@
           />
           <datalist id="people"> </datalist>
           <button onclick="submitData()" id="submitData">
-            תלחצי פה לבחירה
+            לבחירה
           </button>
        <br />
     בחרי את האורח+שרשרת באנגלית
@@ -70,7 +70,7 @@
           />
           <datalist id="peopleEng"> </datalist>
           <button onclick="submitDataEng()" id="submitData">
-            תלחצי פה לבחירה
+            אנגלית
           </button>
       <br/>
       
@@ -94,47 +94,25 @@
       spellcheck="false"
     /><br />
       <table>
-          <tr>
-              <td>
-                  <u>
-                  עברית
-              </u>
-                      </td>
-              <td>
-                  <u>
-                  אנגלית
-                  </u>
-                      </td>
-          </tr>
       <tr> 
           <td>
-    <input type="radio" id="panelHeb" name="type" value="panel" checked="checked"/>
-    <label for="panelHeb">פאנל LIVE</label>
+    <input type="radio" id="panel" name="type" value="panel" checked="checked"/>
+    <label for="panel">פאנל LIVE</label>
               </td>
-          <td>
-    <input type="radio" id="panelEng" name="type" value="panel" />
-    <label for="panelEng">פאנל LIVE</label>
-              </td>
+          
     </tr>
       <tr>
           <td>
-    <input type="radio" id="panelPostHeb" name="type" value="panelPost" />
-    <label for="panelPostHeb">פוסט LIVE פייסבוק</label>
-              </td>
-          <td>
-    <input type="radio" id="panelPostEng" name="type" value="panelPost" />
-    <label for="panelPostEng">פוסט LIVE פייסבוק</label>
+    <input type="radio" id="panelPost" name="type" value="panelPost" />
+    <label for="panelPost">פוסט LIVE פייסבוק</label>
               </td>
     </tr>  
         <tr>
           <td>
-    <input type="radio" id="panelEventHeb" name="type" value="panelEvent" />
-    <label for="panelEventHeb">אירוע ביומן</label>
+    <input type="radio" id="panelEvent" name="type" value="panelEvent" />
+    <label for="panelEvent">אירוע ביומן</label>
               </td>
-          <td>
-    <input type="radio" id="panelEventEng" name="type" value="panelEvent" />
-    <label for="panelEventEng">אירוע ביומן</label>
-              </td>
+
     </tr> 
       </table>
     <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>

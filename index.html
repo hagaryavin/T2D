@@ -38,7 +38,7 @@
           <datalist id="people"> </datalist>
           
           <button onclick="submitData()" id="submitData">
-            תלחצי פה לבחירה
+            לבחירה
           </button>
           <button onclick="document.location='panel.html'" id="toPanel">
             לפאנל
@@ -57,7 +57,7 @@
           <datalist id="peopleEng"> </datalist>
           
           <button onclick="submitDataEng()" id="submitData">
-            תלחצי פה לבחירה
+            אנגלית
           </button>
        <br />
     מה המקום בשרשרת של חרוז זה? (מה המספר?)<input
@@ -108,151 +108,99 @@
       spellcheck="false"
     /><br />
       <table>
-          <tr>
-              <td>
-                  <u>
-                  עברית
-              </u>
-                      </td>
-              <td>
-                  <u>
-                  אנגלית
-                  </u>
-                      </td>
-          </tr>
+     
       <tr> 
           <td>
-    <input type="radio" id="longHeb" name="type" value="long" />
-    <label for="longHeb">ראיון 30</label>
+    <input type="radio" id="long" name="type" value="long" />
+    <label for="long">ראיון 30</label>
               </td>
-          <td>
-    <input type="radio" id="longEng" name="type" value="long" />
-    <label for="longEng">ראיון 30</label>
-              </td>
+          
     </tr>
       <tr>
           <td>
     <input
       type="radio"
-      id="shortHeb"
+      id="short"
       name="type"
       value="short"
       checked="checked"
     />
-    <label for="shortHeb">סרטון 5:55</label>
+    <label for="short">סרטון 5:55</label>
           </td>
-              <td>
-    <input
-      type="radio"
-      id="shortEng"
-      name="type"
-      value="short"
-    />
-    <label for="shortEng">סרטון 5:55</label>
-          </td>
+             
     </tr>
       <tr>
           <td>
-    <input type="radio" id="tinyHeb" name="type" value="tiny" />
-    <label for="tinyHeb">short</label>
+    <input type="radio" id="tiny" name="type" value="tiny" />
+    <label for="tiny">short</label>
          </td>
-           <td>
-    <input type="radio" id="tinyEng" name="type" value="tiny" />
-    <label for="tinyEng">short</label>
-         </td>
+
     </tr>
       <tr>
           <td>
-    <input type="radio" id="soundHeb" name="type" value="sound" />
-    <label for="soundHeb">סאונד</label>
+    <input type="radio" id="sound" name="type" value="sound" />
+    <label for="sound">סאונד</label>
               </td>
-           <td>
-    <input type="radio" id="soundEng" name="type" value="sound" />
-    <label for="soundEng">סאונד</label>
-              </td>
+         
     </tr>
       <tr>
           <td>
-    <input type="radio" id="livePostHeb" name="type" value="livePost" />
-    <label for="livePostHeb">פוסט LIVE פייסבוק</label>
+    <input type="radio" id="livePost" name="type" value="livePost" />
+    <label for="livePost">פוסט LIVE פייסבוק</label>
               </td>
-          <td>
-    <input type="radio" id="livePostEng" name="type" value="livePost" />
-    <label for="livePostEng">פוסט LIVE פייסבוק</label>
-              </td>
+          
     </tr>
      <tr>
           <td>
-    <input type="radio" id="fullVideoLiveHeb" name="type" value="livePost" />
-    <label for="fullVideoLiveHeb">ראיון 30 LIVE</label>
+    <input type="radio" id="fullVideoLive" name="type" value="livePost" />
+    <label for="fullVideoLive">ראיון 30 LIVE</label>
               </td>
-          <td>
-    <input type="radio" id="fullVideoLiveEng" name="type" value="livePost" />
-    <label for="fullVideoLiveEng">ראיון 30 LIVE</label>
-              </td>
+         
     </tr>
      <tr>
           <td>
-    <input type="radio" id="fiveLiveHeb" name="type" value="livePost" />
-    <label for="fiveLiveHeb">סרטון 5:55 LIVE</label>
+    <input type="radio" id="fiveLive" name="type" value="livePost" />
+    <label for="fiveLive">סרטון 5:55 LIVE</label>
               </td>
-          <td>
-    <input type="radio" id="fiveLiveEng" name="type" value="livePost" />
-    <label for="fiveLiveEng">סרטון 5:55 LIVE</label>
-              </td>
+         
     </tr>  
       <tr>
           <td>
-    <input type="radio" id="preHeb" name="type" value="pre" />
-    <label for="preHeb">שיחת הכנה</label>
+    <input type="radio" id="pre" name="type" value="pre" />
+    <label for="pre">שיחת הכנה</label>
               </td>
-           <td>
-    <input type="radio" id="preEng" name="type" value="pre" />
-    <label for="preEng">שיחת הכנה</label>
-              </td>
+          
     </tr>
       <tr>
           <td>
-    <input type="radio" id="expHeb" name="type" value="exp" />
-    <label for="expHeb">הסבר על שרשרת</label>
+    <input type="radio" id="exp" name="type" value="exp" />
+    <label for="exp">הסבר על שרשרת</label>
               </td>
-            <td>
-    <input type="radio" id="expEng" name="type" value="exp" />
-    <label for="expEng">הסבר על שרשרת</label>
-              </td>
+           
     </tr>
       <tr>
           <td>
-    <input type="radio" id="playlistFiveHeb" name="type" value="playlistFive" />
-    <label for="playlistFiveHeb"> תיאור פלייליסט שרשרת5:55</label>
+    <input type="radio" id="playlistFive" name="type" value="playlistFive" />
+    <label for="playlistFive"> תיאור פלייליסט שרשרת5:55</label>
               </td>
-            <td>
-    <input type="radio" id="playlistFiveEng" name="type" value="playlistFive" />
-    <label for="playlistFiveEng"> תיאור פלייליסט שרשרת5:55</label>
-              </td>
+           
     </tr>
       <tr>
           <td>
-    <input type="radio" id="playlistFullHeb" name="type" value="playlistFull" />
-    <label for="playlistFullHeb">תיאור פלייליסט שרשרת 30</label>
+    <input type="radio" id="playlistFull" name="type" value="playlistFull" />
+    <label for="playlistFull">תיאור פלייליסט שרשרת 30</label>
               </td>
-          <td>
-    <input type="radio" id="playlistFullEng" name="type" value="playlistFull" />
-    <label for="playlistFullEng">תיאור פלייליסט שרשרת 30</label>
-              </td>
+   
     </tr>
         <tr>
           <td>
-    <input type="radio" id="eventHeb" name="type" value="event" />
-    <label for="eventHeb">אירוע ביומן</label>
+    <input type="radio" id="event" name="type" value="event" />
+    <label for="event">אירוע ביומן</label>
               </td>
-          <td>
-    <input type="radio" id="eventEng" name="type" value="event" />
-    <label for="eventEng">אירוע ביומן</label>
-              </td>
+    
     </tr> 
       </table>
-    <button onclick="submit()">בואי נהפוך שיהיה בתבנית</button>
+    <button onclick="submit()">להפוך שיהיה בתבנית</button>
     <button onclick="reset()">לאפס נתונים</button>
     <br />
     <br />

@@ -44,7 +44,7 @@ var linesInLivePostEng=[];
 var linesInFiveLiveEng=[];
 var linesInFullVideoLiveEng=[];
 var linesInEventEng=[];
-var currLang="";
+var currLang="heb";
 var titles={
      fiveHeb:"",
      fullVideoHeb:"",
@@ -354,95 +354,109 @@ function getChainData() {
     });
 }
 function submitData() {
-  for (var i = 0; i < allPeople.length; i++) {
-    var nameAndChain = document.getElementById("peopleList").value.split(" + ");
-    if (
-      allPeople[i].name === nameAndChain[0] &&
-      allPeople[i].chain === nameAndChain[1]
-    ) {
-      console.log("row num:" + allPeople[i].row);
-      selectedPerson = allPeople[i];
-      if (selectedPerson.chain !== "") {
-        for (var j = 0; j < allChains.length; j++) {
-          if (
-            selectedPerson.chain === allChains[j].name ||
-            selectedPerson.chain === allChains[j].altName
-          ) {
-            currChain = allChains[j];
-            console.log(currChain);
-            selectedPerson.chain = allChains[j].name;
-            if (
-              endsWithNumber(selectedPerson.chain) &&
-              selectedPerson.chain === allChains[j].name
-            ) {
-              selectedPerson.chain = allChains[j].altName;
-            }
-            if (
-              endsWithNumber(selectedPerson.chain) &&
-              selectedPerson.chain === allChains[j].altName
-            ) {
-              selectedPerson.chain = allChains[j].name;
+    currLang="heb";
+    document.getElementById("peopleListEng").value="";
+    reset();
+    if(document.getElementById("peopleList").value!=""){
+      for (var i = 0; i < allPeople.length; i++) {
+        var nameAndChain = document.getElementById("peopleList").value.split(" + ");
+        if (
+          allPeople[i].name === nameAndChain[0] &&
+          allPeople[i].chain === nameAndChain[1]
+        ) {
+          console.log("row num:" + allPeople[i].row);
+          selectedPerson = allPeople[i];
+          if (selectedPerson.chain !== "") {
+            for (var j = 0; j < allChains.length; j++) {
+              if (
+                selectedPerson.chain === allChains[j].name ||
+                selectedPerson.chain === allChains[j].altName
+              ) {
+                currChain = allChains[j];
+                console.log(currChain);
+                selectedPerson.chain = allChains[j].name;
+                if (
+                  endsWithNumber(selectedPerson.chain) &&
+                  selectedPerson.chain === allChains[j].name
+                ) {
+                  selectedPerson.chain = allChains[j].altName;
+                }
+                if (
+                  endsWithNumber(selectedPerson.chain) &&
+                  selectedPerson.chain === allChains[j].altName
+                ) {
+                  selectedPerson.chain = allChains[j].name;
+                }
+              }
             }
           }
         }
       }
-    }
-  }
 
-  document.getElementById("order").value = selectedPerson.order;
-  document.getElementById("linkToFive").value = selectedPerson.fiveVideo;
-  document.getElementById("linkToFull").value = selectedPerson.fullVideo;
-  document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
-  document.getElementById("linkToExplain").value = currChain.about;
-  document.getElementById("linkToPlaylist").value = currChain.playlist;
+      document.getElementById("order").value = selectedPerson.order;
+      document.getElementById("linkToFive").value = selectedPerson.fiveVideo;
+      document.getElementById("linkToFull").value = selectedPerson.fullVideo;
+      document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
+      document.getElementById("linkToExplain").value = currChain.about;
+      document.getElementById("linkToPlaylist").value = currChain.playlist;
+    }
   
 }
 function submitDataEng() {
-  for (var i = 0; i < allPeople.length; i++) {
-    var nameAndChain = document.getElementById("peopleListEng").value.split(" + ");
-    if (
-      allPeople[i].name === nameAndChain[0] &&
-      allPeople[i].chain === nameAndChain[1]
-    ) {
-      console.log("row num:" + allPeople[i].row);
-      selectedPerson = allPeople[i];
-        console.log(allPeople[i]);
-      if (selectedPerson.chain !== "") {
-        for (var j = 0; j < allChains.length; j++) {
-          if (
-            selectedPerson.chain === allChains[j].name ||
-            selectedPerson.chain === allChains[j].altName
-          ) {
-            currChain = allChains[j];
-            console.log(currChain);
-            selectedPerson.chain = allChains[j].name;
-            if (
-              endsWithNumber(selectedPerson.chain) &&
-              selectedPerson.chain === allChains[j].name
-            ) {
-              selectedPerson.chain = allChains[j].altName;
-            }
-            if (
-              endsWithNumber(selectedPerson.chain) &&
-              selectedPerson.chain === allChains[j].altName
-            ) {
-              selectedPerson.chain = allChains[j].name;
+    currLang="eng";
+    document.getElementById("peopleList").value="";
+    reset();
+    if(document.getElementById("peopleListEng").value!=""){
+      for (var i = 0; i < allPeople.length; i++) {
+        var nameAndChain = document.getElementById("peopleListEng").value.split(" + ");
+        if (
+          allPeople[i].name === nameAndChain[0] &&
+          allPeople[i].chain === nameAndChain[1]
+        ) {
+          console.log("row num:" + allPeople[i].row);
+          selectedPerson = allPeople[i];
+            console.log(allPeople[i]);
+          if (selectedPerson.chain !== "") {
+            for (var j = 0; j < allChains.length; j++) {
+              if (
+                selectedPerson.chain === allChains[j].name ||
+                selectedPerson.chain === allChains[j].altName
+              ) {
+                currChain = allChains[j];
+                console.log(currChain);
+                selectedPerson.chain = allChains[j].name;
+                if (
+                  endsWithNumber(selectedPerson.chain) &&
+                  selectedPerson.chain === allChains[j].name
+                ) {
+                  selectedPerson.chain = allChains[j].altName;
+                }
+                if (
+                  endsWithNumber(selectedPerson.chain) &&
+                  selectedPerson.chain === allChains[j].altName
+                ) {
+                  selectedPerson.chain = allChains[j].name;
+                }
+              }
             }
           }
         }
       }
-    }
-  }
 
-  document.getElementById("order").value = selectedPerson.order;
-  document.getElementById("linkToFive").value = selectedPerson.fiveVideo;
-  document.getElementById("linkToFull").value = selectedPerson.fullVideo;
-  document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
-  document.getElementById("linkToExplain").value = currChain.about;
-  document.getElementById("linkToPlaylist").value = currChain.playlist;
+      document.getElementById("order").value = selectedPerson.order;
+      document.getElementById("linkToFive").value = selectedPerson.fiveVideo;
+      document.getElementById("linkToFull").value = selectedPerson.fullVideo;
+      document.getElementById("linkToPrep").value = selectedPerson.prepTalk;
+      document.getElementById("linkToExplain").value = currChain.about;
+      document.getElementById("linkToPlaylist").value = currChain.playlist;
+    }
   
 }
 function reset() {
+    var testDiv = document.getElementById("text");
+    removeAllChildNodes(testDiv);
+    selectedPerson = {};
+    document.getElementById("title").innerHTML="";
   document.getElementById("order").value = "";
   document.getElementById("linkToFull").value = "";
   document.getElementById("linkToPrep").value = "";
@@ -526,138 +540,67 @@ function submit() {
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
     var type="five";
     var lang="heb";
-     if (document.getElementById("tinyHeb").checked) 
+     if (document.getElementById("tiny").checked) 
          {
              type="short";
-             lang="heb";
          }
         
-     if (document.getElementById("shortHeb").checked) 
+     if (document.getElementById("short").checked) 
        
     {
              type="five";
-             lang="heb";
          }
-    if(document.getElementById("longHeb").checked)
+    if(document.getElementById("long").checked)
     {
              type="fullVideo";
-             lang="heb";
          }
-    if(document.getElementById("soundHeb").checked)
+    if(document.getElementById("sound").checked)
     
     {
              type="sound";
-             lang="heb";
          }
-    if(document.getElementById("preHeb").checked)
+    if(document.getElementById("pre").checked)
         
     {
              type="prepareTalk";
-             lang="heb";
          }
-    if(document.getElementById("expHeb").checked)
+    if(document.getElementById("exp").checked)
         
     {
              type="explainChain";
-             lang="heb";
          }
-    if(document.getElementById("playlistFiveHeb").checked)
+    if(document.getElementById("playlistFive").checked)
     {
              type="playlistFive";
-             lang="heb";
          }
-    if(document.getElementById("playlistFullHeb").checked)
+    if(document.getElementById("playlistFull").checked)
     {
              type="playlistFull";
-             lang="heb";
          }
-    if(document.getElementById("livePostHeb").checked)
+    if(document.getElementById("livePost").checked)
     {
              type="livePost";
-             lang="heb";
          }
-    if(document.getElementById("fullVideoLiveHeb").checked)
+    if(document.getElementById("fullVideoLive").checked)
     {
              type="fullVideoLive";
-             lang="heb";
          }
-     if(document.getElementById("fiveLiveHeb").checked)
+     if(document.getElementById("fiveLive").checked)
     {
              type="fiveLive";
-             lang="heb";
          }
-      if(document.getElementById("eventHeb").checked)
+      if(document.getElementById("event").checked)
     {
              type="event";
-             lang="heb";
             document.getElementById("zoomCopy").style.visibility="visible";
          }
-     if (document.getElementById("tinyEng").checked) 
-    {
-             type="short";
-             lang="eng";
-         }
-     if (document.getElementById("shortEng").checked) 
-    {
-             type="five";
-             lang="eng";
-         }
-    if(document.getElementById("longEng").checked)
-    {
-             type="fullVideo";
-             lang="eng";
-         }
-    if(document.getElementById("soundEng").checked)
-    {
-             type="sound";
-             lang="eng";
-         }
-    if(document.getElementById("preEng").checked)
-    {
-             type="prepareTalk";
-             lang="eng";
-         }
-    if(document.getElementById("expEng").checked)
-    {
-             type="explainChain";
-             lang="eng";
-         }
-    if(document.getElementById("playlistFiveEng").checked)
-    {
-             type="playlistFive";
-             lang="eng";
-         }
-    if(document.getElementById("playlistFullEng").checked)
-    {
-             type="playlistFull";
-             lang="eng";
-         }
-    if(document.getElementById("livePostEng").checked)
-    {
-             type="livePost";
-             lang="eng";
-         }
-    if(document.getElementById("fullVideoLiveEng").checked)
-    {
-             type="fullVideoLive";
-             lang="eng";
-         }
-    if(document.getElementById("fiveLiveEng").checked)
-    {
-             type="fiveLive";
-             lang="eng";
-         }
-    if(document.getElementById("eventEng").checked)
-    {
-             type="event";
-             lang="eng";
-            document.getElementById("zoomCopy").style.visibility="visible";
-         }
-    showText(type,lang);
-    fixTitle(type,lang);
+     if(selectedPerson!={}){
+        showText(type);
+        fixTitle(type);
+     }
 }
-function showText(type,lang){
-    currLang=lang;
+function showText(type){
+    lang=currLang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
     console.log("in "+type+":");
@@ -791,10 +734,8 @@ function swapWithData(line){
             if(document.getElementById("linkToFive").value===""){
                 line="";
             }
-             if(document.getElementById("shortHeb").checked ||
-                document.getElementById("shortEng").checked||
-                document.getElementById("fiveLiveHeb").checked||
-                document.getElementById("fiveLiveEng").checked){
+             if(document.getElementById("short").checked ||
+                document.getElementById("fiveLive").checked){
                     line="";
             }
         }       
@@ -982,7 +923,8 @@ function swapWithData(line){
     }
     return line;
 }
-function fixTitle(type,lang) {
+function fixTitle(type) {
+    lang=currLang;
     var finalTitle="";
     var finalType="";
     if(lang==="heb"){

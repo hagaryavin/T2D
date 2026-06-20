@@ -56,7 +56,7 @@ var linesInTriangleEventHeb=[];
 var linesInTriangleEng=[];
 var linesInTrianglePostEng=[];
 var linesInTriangleEventEng=[];
-var currLang="";
+var currLang="heb";
 var titles={
      triangleHeb:"",
      trianglePostHeb:"",
@@ -304,6 +304,8 @@ function getChainData() {
     });
 }
 function submitData() {
+    reset();
+    currLang="heb";
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
           selectedData.commontitle1="";
@@ -341,6 +343,7 @@ function submitData() {
     var nameAndChain1 = document.getElementById("peopleList1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleList2").value.split(" + ");
     var chainVal=document.getElementById("chain").value;
+    if(nameAndChain1[1]===nameAndChain2[1]){
   for (var i = 0; i < allPeople.length; i++) {
     
     if (
@@ -482,7 +485,7 @@ function submitData() {
             chainVal === allChains[j].altName
           ) {
             currChain = allChains[j];
-            document.getElementById("linkToPlaylist").value = currChain.playlist;
+           document.getElementById("chain").value=currChain.name; document.getElementById("linkToPlaylist").value = currChain.playlist;
             console.log(currChain);
             if (
               chainVal === allChains[j].name
@@ -497,10 +500,11 @@ function submitData() {
           }
         }
       }
-    
-
+    }
 }
 function submitDataEng() {
+    reset();
+    currLang="eng";
     selectedData.guestName1="";
       selectedData.topicOfStory1="";
         selectedData.commontitle1="";
@@ -536,7 +540,7 @@ function submitDataEng() {
         selectedData.interviewerPhone="";
     var nameAndChain1 = document.getElementById("peopleListEng1").value.split(" + ");
     var nameAndChain2 = document.getElementById("peopleListEng2").value.split(" + ");
-    
+    var chainVal=document.getElementById("chain").value;
     if(nameAndChain1[1]===nameAndChain2[1]){
   for (var i = 0; i < allPeople.length; i++) {
     
@@ -578,6 +582,8 @@ selectedData.sites1=allPeople[i].sites;
             allPeople[i].chain === allChains[j].altName
           ) {
             currChain = allChains[j];
+              document.getElementById("chain").value=currChain.name;
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
             console.log(currChain);
             allPeople[i].chain = allChains[j].name;
             if (
@@ -633,42 +639,65 @@ selectedData.sites1=allPeople[i].sites;
         if(allPeople[i].interphone!==""){
             selectedData.interviewerPhone=allPeople[i].interphone;
         }
-//      if (allPeople[i].chain !== "") {
-//        for (var j = 0; j < allChains.length; j++) {
-//          if (
-//            allPeople[i].chain === allChains[j].name ||
-//            allPeople[i].chain === allChains[j].altName
-//          ) {
-//            currChain = allChains[j];
-//            console.log(currChain);
-//            allPeople[i].chain = allChains[j].name;
-//            if (
-//              endsWithNumber(allPeople[i].chain) &&
-//              allPeople[i].chain === allChains[j].name
-//            ) {
-//              allPeople[i].chain = allChains[j].altName;
-//            }
-//            if (
-//              endsWithNumber(allPeople[i].chain) &&
-//              allPeople[i].chain === allChains[j].altName
-//            ) {
-//              allPeople[i].chain = allChains[j].name;
-//            }
-//          }
-//        }
-//      }
+      if (allPeople[i].chain !== "") {
+        for (var j = 0; j < allChains.length; j++) {
+          if (
+            allPeople[i].chain === allChains[j].name ||
+            allPeople[i].chain === allChains[j].altName
+          ) {
+            currChain = allChains[j];
+              document.getElementById("chain").value=currChain.name;
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
+            console.log(currChain);
+            allPeople[i].chain = allChains[j].name;
+            if (
+              endsWithNumber(allPeople[i].chain) &&
+              allPeople[i].chain === allChains[j].name
+            ) {
+              allPeople[i].chain = allChains[j].altName;
+            }
+            if (
+              endsWithNumber(allPeople[i].chain) &&
+              allPeople[i].chain === allChains[j].altName
+            ) {
+              allPeople[i].chain = allChains[j].name;
+            }
+          }
+        }
+      }
         if(selectedData.interviewerName===""&&currChain.creator!==""){
           selectedData.interviewerName=currChain.creator;
       } 
     }
   }
-   document.getElementById("linkToPlaylist").value = currChain.playlist;
-    }
-    else{
-        alert("החרוזים שנבחרו לא באותה שרשרת!")
+  if (chainVal !== "") {
+        for (var j = 0; j < allChains.length; j++) {
+          if (
+            chainVal === allChains[j].name ||
+            chainVal === allChains[j].altName
+          ) {
+            currChain = allChains[j];
+            document.getElementById("linkToPlaylist").value = currChain.playlist;
+            console.log(currChain);
+            if (
+              chainVal === allChains[j].name
+            ) {
+              chainVal = allChains[j].altName;
+            }
+            if (
+              chainVal === allChains[j].altName
+            ) {
+              chainVal = allChains[j].name;
+            }
+          }
+        }
+      }
     }
 }
 function reset() {
+     var testDiv = document.getElementById("text");
+    removeAllChildNodes(testDiv);
+    document.getElementById("title").innerHTML=""; 
   document.getElementById("order").value = "";
   document.getElementById("linkToPlaylist").value = "";
     document.getElementById("chain").value = "";
@@ -743,57 +772,36 @@ function fixChain(chain) {
   return chain;
 }
 function submit() {
-    document.getElementById("zoomCopy").style.visibility="hidden";
+     document.getElementById("zoomCopy").style.visibility="hidden";
     document.getElementById("zoomCopy").innerHTML="להעתקת לינק לזום";
     document.getElementById("titleCopy").innerHTML="להעתקת הכותרת";
    document.getElementById("textCopy").innerHTML="להעתקת התיאור";
     var type="triangle";
     var lang="heb";
 
-    if(document.getElementById("triangleHeb").checked)
+    if(document.getElementById("triangle").checked)
     {
              type="triangle";
-             lang="heb";
          }
 
-    if(document.getElementById("trianglePostHeb").checked)
+    if(document.getElementById("trianglePost").checked)
     {
              type="trianglePost";
-             lang="heb";
          }
 
 
-      if(document.getElementById("triangleEventHeb").checked)
+      if(document.getElementById("triangleEvent").checked)
     {
              type="triangleEvent";
-             lang="heb";
             document.getElementById("zoomCopy").style.visibility="visible";
 
          }
 
-    if(document.getElementById("triangleEng").checked)
-    {
-             type="triangle";
-             lang="eng";
-         }
-
-    if(document.getElementById("trianglePostEng").checked)
-    {
-             type="trianglePost";
-             lang="eng";
-         }
-    if(document.getElementById("triangleEventEng").checked)
-    {
-             type="triangleEvent";
-             lang="eng";
-            document.getElementById("zoomCopy").style.visibility="visible";
-
-         }
-    showText(type,lang);
-    fixTitle(type,lang);
+    showText(type);
+    fixTitle(type);
 }
-function showText(type,lang){
-    currLang=lang;
+function showText(type){
+    lang=currLang;
     var testDiv = document.getElementById("text");
     removeAllChildNodes(testDiv);
     console.log("in "+type+":");
@@ -1118,7 +1126,8 @@ function swapWithData(line){
     }
     return line;
 }
-function fixTitle(type,lang) {
+function fixTitle(type) {
+    lang=currLang;
     var finalTitle="";
     var finalType="";
     if(lang==="heb"){
